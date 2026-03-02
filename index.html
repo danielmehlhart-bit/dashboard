@@ -7,45 +7,35 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; background: #f7f7f7; color: #222; line-height: 1.6; padding: 0; }
-
-  /* Header */
   .header { background: #fff; padding: 1.5rem 2rem; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10; }
   .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
   .header h1 { font-size: 1.5rem; font-weight: 700; color: #222; }
   .header .date { color: #717171; font-size: 0.9rem; }
-
   .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 3rem; }
 
-  /* Weather Bar */
   .weather-bar { background: #fff; border-radius: 16px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .weather-slot { text-align: center; }
   .weather-slot .label { font-size: 0.75rem; color: #717171; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
   .weather-slot .value { font-size: 1.1rem; color: #222; font-weight: 500; margin-top: 0.1rem; }
   .weather-slot .detail { font-size: 0.8rem; color: #999; }
 
-  /* Section */
   h2 { font-size: 1.25rem; font-weight: 700; color: #222; margin: 2rem 0 1rem; }
   h2 .badge { background: #f0f0f0; color: #717171; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 500; margin-left: 0.5rem; vertical-align: middle; }
 
-  /* Cards */
-  .card { background: #fff; border-radius: 16px; padding: 1.2rem 1.5rem; margin-bottom: 0.8rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
-  .card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
+  .card { background: #fff; border-radius: 16px; padding: 1.2rem 1.5rem; margin-bottom: 0.8rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); }
 
-  /* TODOs */
   .todo { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.8rem 0; border-bottom: 1px solid #f5f5f5; }
   .todo:last-child { border-bottom: none; }
   .todo .check { width: 20px; height: 20px; border: 2px solid #ddd; border-radius: 50%; flex-shrink: 0; margin-top: 0.15rem; }
   .todo .check.urgent { border-color: #ff385c; }
   .todo .text { font-size: 0.92rem; color: #222; }
   .todo .meta { font-size: 0.78rem; color: #999; margin-top: 0.15rem; }
-  .todo .tag { display: inline-block; font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-right: 0.3rem; font-weight: 600; }
+  .tag { display: inline-block; font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-right: 0.3rem; font-weight: 600; }
   .tag.ac { background: #e8f5e9; color: #2e7d32; }
   .tag.bpp { background: #fce4ec; color: #c62828; }
-  .tag.concord { background: #e3f2fd; color: #1565c0; }
   .tag.personal { background: #f3e5f5; color: #7b1fa2; }
   .tag.overdue { background: #fff3e0; color: #e65100; }
 
-  /* Meetings */
   .meeting { display: flex; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid #f5f5f5; align-items: flex-start; }
   .meeting:last-child { border-bottom: none; }
   .meeting .time-block { flex-shrink: 0; text-align: center; min-width: 50px; }
@@ -54,15 +44,13 @@
   .meeting .info .title { font-size: 0.92rem; color: #222; font-weight: 500; }
   .meeting .info .detail { font-size: 0.8rem; color: #999; }
 
-  /* Briefings Grid */
-  .briefings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
-  .briefing-card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.2s; display: block; }
-  .briefing-card:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
-  .briefing-card .emoji { font-size: 1.5rem; margin-bottom: 0.4rem; }
-  .briefing-card .name { font-size: 0.88rem; font-weight: 600; color: #222; }
-  .briefing-card .desc { font-size: 0.78rem; color: #999; margin-top: 0.2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
+  .grid-card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); text-decoration: none; color: inherit; display: block; transition: transform 0.15s, box-shadow 0.2s; }
+  .grid-card:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
+  .grid-card .emoji { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .grid-card .name { font-size: 0.88rem; font-weight: 600; color: #222; }
+  .grid-card .desc { font-size: 0.78rem; color: #999; margin-top: 0.2rem; }
 
-  /* Projects Grid */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
   .project-card { background: #fff; border-radius: 16px; padding: 1.3rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
   .project-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
@@ -76,34 +64,42 @@
   .project-card .next { font-size: 0.82rem; color: #222; padding-top: 0.6rem; border-top: 1px solid #f5f5f5; }
   .project-card .next strong { color: #ff385c; }
 
-  /* Trail */
   .trail-item { display: flex; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid #f5f5f5; }
   .trail-item:last-child { border-bottom: none; }
-  .trail-item .date { flex-shrink: 0; min-width: 80px; font-size: 0.8rem; color: #999; font-weight: 600; padding-top: 0.1rem; }
+  .trail-item .tdate { flex-shrink: 0; min-width: 80px; font-size: 0.8rem; color: #999; font-weight: 600; padding-top: 0.1rem; }
   .trail-item .events { font-size: 0.88rem; color: #444; }
   .trail-item .event { margin-bottom: 0.2rem; }
 
-  /* Ideas */
+  .research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; }
+  a.research-card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); text-decoration: none; color: inherit; display: block; transition: transform 0.15s, box-shadow 0.2s; }
+  a.research-card:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
+  a.research-card .type { font-size: 0.65rem; color: #999; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  a.research-card .title { font-size: 0.9rem; font-weight: 600; color: #222; margin-top: 0.2rem; }
+  a.research-card .rdate { font-size: 0.75rem; color: #bbb; margin-top: 0.3rem; }
+
   .ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; }
   .idea-card { background: #fff; border-radius: 12px; padding: 1rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); }
   .idea-card .name { font-size: 0.9rem; font-weight: 600; color: #222; }
   .idea-card .detail { font-size: 0.8rem; color: #999; margin-top: 0.2rem; }
 
-  /* Research/Mockups */
-  .research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; }
-  .research-card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; }
-  .research-card .type { font-size: 0.65rem; color: #999; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
-  .research-card .title { font-size: 0.9rem; font-weight: 600; color: #222; margin-top: 0.2rem; }
-  .research-card .date { font-size: 0.75rem; color: #bbb; margin-top: 0.3rem; }
-  .research-card .print-hint { font-size: 0.7rem; color: #ccc; margin-top: 0.4rem; }
+  .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .link-chip { background: #fff; padding: 0.5rem 1rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration: none; color: #222; font-size: 0.85rem; font-weight: 500; transition: box-shadow 0.2s; }
+  .link-chip:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+  .compass { background: linear-gradient(135deg, #fafafa, #f0f0f0); border: 1px solid #eee; border-radius: 16px; padding: 1.3rem 1.5rem; }
+  .compass .question { font-size: 1.05rem; font-weight: 600; color: #222; font-style: italic; margin-bottom: 0.8rem; }
+  .compass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; }
+  .compass-do { color: #2e7d32; }
+  .compass-dont { color: #c62828; }
 
   .footer { text-align: center; color: #ccc; font-size: 0.8rem; margin-top: 2rem; padding: 1rem; }
 
   @media print { .header { position: static; } body { background: #fff; } }
-  @media (max-width: 600px) { 
+  @media (max-width: 600px) {
     .container { padding: 1rem; }
-    .projects-grid, .briefings-grid, .ideas-grid, .research-grid { grid-template-columns: 1fr; }
+    .projects-grid, .grid, .ideas-grid, .research-grid { grid-template-columns: 1fr; }
     .weather-bar { flex-direction: column; align-items: flex-start; }
+    .compass-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -112,7 +108,7 @@
 <div class="header">
   <div class="header-inner">
     <h1>☀️ Dashboard</h1>
-    <div class="date">Montag, 2. März 2026 · Stand: 13:30</div>
+    <div class="date">Montag, 2. März 2026 · Stand: 14:05</div>
   </div>
 </div>
 
@@ -164,65 +160,47 @@
     <div class="check"></div>
     <div>
       <div class="text">App-Namen finalizen (Naming-Runde läuft)</div>
-      <div class="meta"><span class="tag personal">Naming</span> ⚠️ "Architekt Connect" ist vergeben (Zinkler & Brandes)</div>
+      <div class="meta"><span class="tag personal">Naming</span> ⚠️ "Architekt Connect" ist vergeben (Zinkler &amp; Brandes)</div>
     </div>
   </div>
 </div>
 
-<!-- Meetings diese Woche -->
+<!-- Meetings -->
 <h2>📅 Meetings diese Woche</h2>
 <div class="card">
   <div class="meeting">
-    <div class="time-block">
-      <div class="day">Heute</div>
-      <div class="time">16:00</div>
-    </div>
-    <div class="info">
-      <div class="title">Arion Nachhilfe</div>
-      <div class="detail">Montag-Routine, 5. Klasse Realschule</div>
-    </div>
+    <div class="time-block"><div class="day">Heute</div><div class="time">16:00</div></div>
+    <div class="info"><div class="title">Arion Nachhilfe</div><div class="detail">Montag-Routine, 5. Klasse Realschule</div></div>
   </div>
   <div class="meeting">
-    <div class="time-block">
-      <div class="day">Mi 4.</div>
-      <div class="time">11:00</div>
-    </div>
-    <div class="info">
-      <div class="title">🏠 Discovery Call — Alex Hamm (HAMM Architekten)</div>
-      <div class="detail">Google Meet · Zweiter Architekt-Kunde · kennt Kim, wurde vorinformiert</div>
-    </div>
+    <div class="time-block"><div class="day">Mi 4.</div><div class="time">11:00</div></div>
+    <div class="info"><div class="title">🏠 Discovery Call — Alex Hamm (HAMM Architekten)</div><div class="detail">Google Meet · Zweiter Architekt-Kunde · kennt Kim</div></div>
   </div>
   <div class="meeting">
-    <div class="time-block">
-      <div class="day">Mi 4.</div>
-      <div class="time">18:30</div>
-    </div>
-    <div class="info">
-      <div class="title">🤖 MAINCLAW — OpenClaw Frankfurt Meetup</div>
-      <div class="detail">Abends, Community-Event</div>
-    </div>
+    <div class="time-block"><div class="day">Mi 4.</div><div class="time">18:30</div></div>
+    <div class="info"><div class="title">🤖 MAINCLAW — OpenClaw Frankfurt Meetup</div><div class="detail">Community-Event</div></div>
   </div>
 </div>
 
 <!-- Briefings -->
 <h2>📰 Heutige Briefings</h2>
-<div class="briefings-grid">
-  <div class="briefing-card">
+<div class="grid">
+  <a class="grid-card" href="iran-briefing.html">
     <div class="emoji">🎙️</div>
     <div class="name">Alles auf Aktien</div>
     <div class="desc">Iran-Eskalation, Berkshire Q4, Xiaomi, Thailand</div>
-  </div>
-  <div class="briefing-card">
+  </a>
+  <div class="grid-card">
     <div class="emoji">📊</div>
     <div class="name">Marktbericht</div>
-    <div class="desc">DAX 24.986 · US-Zölle + Nahost belasten · Rheinmetall 1.723€</div>
+    <div class="desc">DAX 24.986 · US-Zölle + Nahost belasten</div>
   </div>
-  <div class="briefing-card">
+  <div class="grid-card">
     <div class="emoji">⚽</div>
     <div class="name">Eintracht</div>
-    <div class="desc">2:0 gegen Freiburg · Chaibi Joker-Tor · Santos verletzt (18. Sekunde)</div>
+    <div class="desc">2:0 gegen Freiburg · Chaibi Joker-Tor</div>
   </div>
-  <div class="briefing-card">
+  <div class="grid-card">
     <div class="emoji">☀️</div>
     <div class="name">Commute-Wetter</div>
     <div class="desc">Trocken, 5-9°C, Radltag ✅</div>
@@ -234,34 +212,34 @@
 <div class="projects-grid">
   <div class="project-card">
     <div class="top">
-      <span class="name">🏗️ [Name TBD] <span style="font-size:0.75rem;color:#999">(ex Architekt Connect)</span></span>
+      <span class="name">🏗️ [Name TBD]</span>
       <span class="status active">Aktiv — Pilot</span>
     </div>
-    <div class="desc">PM-Tool für kleine Büros. All-in-One: Projekte, Tasks, HOAI, Bautagebuch, Zeiterfassung, Gantt. Pilot: Weber Architekten (Kim & Paul).</div>
-    <div class="next"><strong>Next:</strong> Kim Follow-Up · SQL Migration · Foto-Feature testen · Naming klären · Inbox-Agent Konzept vorstellen</div>
+    <div class="desc">PM-Tool für kleine Büros. All-in-One: Projekte, Tasks, HOAI, Bautagebuch, Zeiterfassung, Gantt. Pilot: Weber Architekten.</div>
+    <div class="next"><strong>Next:</strong> Kim Follow-Up · SQL Migration · Foto-Feature · Naming · Inbox-Agent vorstellen</div>
   </div>
   <div class="project-card">
     <div class="top">
       <span class="name">📸 BPP Core CRM</span>
       <span class="status active">Aktiv — MVP</span>
     </div>
-    <div class="desc">CRM für Bund professioneller Porträtfotografen (~300 Mitglieder). Members, Events, Dashboard, Segmentierung.</div>
-    <div class="next"><strong>Next:</strong> Event AI Implementierung (3 Sprints, ~60% existiert) · Meeting mit Sebastian anfragen</div>
+    <div class="desc">CRM für Bund professioneller Porträtfotografen (~300 Mitglieder).</div>
+    <div class="next"><strong>Next:</strong> Event AI (3 Sprints, ~60% existiert) · Meeting mit Sebastian</div>
   </div>
   <div class="project-card">
     <div class="top">
       <span class="name">✅ Concord</span>
       <span class="status waiting">Stabil</span>
     </div>
-    <div class="desc">Eigene Produktivitäts-App. Tasks, Projekte, Meetings, Decisions. Leadership OS. Voice→Concord funktioniert.</div>
-    <div class="next">Kein aktiver Buildout gerade. Weiternutzung.</div>
+    <div class="desc">Eigene Produktivitäts-App. Tasks, Projekte, Meetings, Decisions. Voice→Concord funktioniert.</div>
+    <div class="next">Kein aktiver Buildout. Weiternutzung.</div>
   </div>
   <div class="project-card" style="border-left: 3px solid #1565c0;">
     <div class="top">
       <span class="name">📬 Inbox-Agent</span>
       <span class="status concept">Konzept</span>
     </div>
-    <div class="desc">Email-Triage + Task-Extraktion via M365 Graph API. Kims Hauptschmerz. 5 Sprints, ~15-18h Build. ~$7-8/Monat LLM-Kosten.</div>
+    <div class="desc">Email-Triage + Task-Extraktion via M365 Graph API. 5 Sprints, ~15-18h. ~$7-8/Monat.</div>
     <div class="next"><strong>Next:</strong> Kim M365-Lizenz bestätigen · Sprint 1: OAuth-Flow</div>
   </div>
 </div>
@@ -270,34 +248,34 @@
 <h2>🥾 Trail — Letzte Tage</h2>
 <div class="card">
   <div class="trail-item">
-    <div class="date">Mo 2. Mrz</div>
+    <div class="tdate">Mo 2. Mrz</div>
     <div class="events">
       <div class="event">📊 Competitor Research (9 Wettbewerber, Marktlücke bestätigt)</div>
       <div class="event">📸 Bautagebuch Foto-Feature gebaut + gepusht</div>
       <div class="event">📬 Inbox-Agent Konzept + UX Flow + Kim-Präsentation</div>
       <div class="event">🤖 Agentic Vision: 5 Agent-Rollen, 3-Schichten-Architektur</div>
-      <div class="event">📸 BPP Event AI PRD reviewed, Implementierungsplan</div>
       <div class="event">🎙️ ElevenLabs TTS eingerichtet (Stimme: Will)</div>
-      <div class="event">🏷️ Naming-Runde gestartet (20 Vorschläge, Favorit: Zirka?)</div>
+      <div class="event">🏷️ Naming-Runde gestartet (20 Vorschläge)</div>
+      <div class="event">☀️ Dashboard v2 live auf GitHub Pages</div>
     </div>
   </div>
   <div class="trail-item">
-    <div class="date">So 1. Mrz</div>
+    <div class="tdate">So 1. Mrz</div>
     <div class="events">
-      <div class="event">🤖 Agent Company Konzept — Daniel: "gut, aber zu früh"</div>
-      <div class="event">🇮🇷 Iran-Briefing als HTML (Testlauf für neues Format)</div>
+      <div class="event">🤖 Agent Company Konzept — "gut, aber zu früh"</div>
+      <div class="event">🇮🇷 Iran-Briefing als HTML (neues Format)</div>
       <div class="event">📊 Wochenrecap KW9</div>
     </div>
   </div>
   <div class="trail-item">
-    <div class="date">Fr 28. Feb</div>
+    <div class="tdate">Fr 28. Feb</div>
     <div class="events">
-      <div class="event">📸 BPP Core CRM gestartet — Seed Data, Dashboard, Members</div>
-      <div class="event">⚠️ Coding-Regel: "IMMER FRAGEN bevor ich baue und pushe!"</div>
+      <div class="event">📸 BPP Core CRM gestartet</div>
+      <div class="event">⚠️ Coding-Regel: "IMMER FRAGEN bevor bauen + pushen"</div>
     </div>
   </div>
   <div class="trail-item">
-    <div class="date">Do 27. Feb</div>
+    <div class="tdate">Do 27. Feb</div>
     <div class="events">
       <div class="event">🔧 7 Skills gebaut (RSS, Strava, Supabase, GitHub, ...)</div>
     </div>
@@ -305,110 +283,87 @@
 </div>
 
 <!-- Research & Mockups -->
-<h2>🔬 Research & Mockups <span class="badge">Strg+P für PDF</span></h2>
+<h2>🔬 Research &amp; Mockups <span class="badge">Strg+P → PDF</span></h2>
 <div class="research-grid">
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+  <a class="research-card" href="architekt-connect-agentic-vision.html">
     <div class="type">🤖 Vision</div>
     <div class="title">Agentic Vision — 5 Agent-Rollen</div>
-    <div class="date">2. März · architekt-connect-agentic-vision.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">2. März</div>
+  </a>
+  <a class="research-card" href="inbox-agent-ux-flow.html">
     <div class="type">📬 UX Flow</div>
     <div class="title">Inbox-Agent — Technischer Flow</div>
-    <div class="date">2. März · inbox-agent-ux-flow.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">2. März</div>
+  </a>
+  <a class="research-card" href="inbox-agent-fuer-kim.html">
     <div class="type">🎨 Mockup</div>
     <div class="title">Inbox-Agent — Für Kim (Präsentation)</div>
-    <div class="date">2. März · inbox-agent-fuer-kim.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">2. März</div>
+  </a>
+  <a class="research-card" href="https://docs.google.com/document/d/1HxCBmk3wqFNwO8i6oGSESg1e7MGlDvg90TuedugNmSM" target="_blank">
     <div class="type">📊 Analyse</div>
     <div class="title">Competitor Research (9 Wettbewerber)</div>
-    <div class="date">2. März · Google Drive</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">2. März · Google Drive ↗</div>
+  </a>
+  <a class="research-card" href="agent-company-architekt.html">
     <div class="type">🤖 Konzept</div>
     <div class="title">Agent Company — Architektur</div>
-    <div class="date">1. März · agent-company-architekt.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">1. März</div>
+  </a>
+  <a class="research-card" href="iran-briefing.html">
     <div class="type">🇮🇷 Briefing</div>
-    <div class="title">Iran — Geopolitik & Verbraucher</div>
-    <div class="date">1. März · iran-briefing.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="title">Iran — Geopolitik &amp; Verbraucher</div>
+    <div class="rdate">1. März</div>
+  </a>
+  <a class="research-card" href="wochenrecap-kw9.html">
     <div class="type">📊 Recap</div>
     <div class="title">Wochenrecap KW9</div>
-    <div class="date">1. März · wochenrecap-kw9.html</div>
-  </div>
-  <a class="research-card" style="text-decoration:none;color:inherit;" 
+    <div class="rdate">1. März</div>
+  </a>
+  <a class="research-card" href="naming-vorschlaege.html">
     <div class="type">🏷️ Naming</div>
     <div class="title">20 Namensvorschläge</div>
-    <div class="date">2. März · naming-vorschlaege.html</div>
-  </div>
+    <div class="rdate">2. März</div>
+  </a>
 </div>
 
 <!-- Ideen -->
 <h2>💡 Ideen-Parkplatz</h2>
 <div class="ideas-grid">
-  <div class="idea-card">
-    <div class="name">🧑‍🦽 Michael (Locked-In)</div>
-    <div class="detail">OpenClaw auf Pi für Familienfreund. Email an Daniels Vater verfasst.</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">🏗️ Multi-Tenant / Self-Hosting</div>
-    <div class="detail">Hetzner + Coolify. Guide auf Drive. Wenn App öffentlich wird.</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">🤖 Agent Company</div>
-    <div class="detail">Agent-basierte "Firma". Zu früh — nach ersten zahlenden Kunden.</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">🌐 Domain-Suche</div>
-    <div class="detail">vorsprung.io vergeben. Neue Naming-Runde läuft!</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">🔊 Voice-to-Voice</div>
-    <div class="detail">ElevenLabs TTS eingerichtet ✅ — Realtime Voice-Call noch offen.</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">🚌 RMV API</div>
-    <div class="detail">HAFAS Key beantragen für ÖPNV-Auskünfte.</div>
-  </div>
-  <div class="idea-card">
-    <div class="name">📦 ClawHub Skills</div>
-    <div class="detail">Gmail, Supabase, ElevenLabs TTS → veröffentlichen.</div>
-  </div>
+  <div class="idea-card"><div class="name">🧑‍🦽 Michael (Locked-In)</div><div class="detail">OpenClaw auf Pi für Familienfreund. Email an Daniels Vater verfasst.</div></div>
+  <div class="idea-card"><div class="name">🏗️ Multi-Tenant / Self-Hosting</div><div class="detail">Hetzner + Coolify. Guide auf Drive. Wenn App öffentlich wird.</div></div>
+  <div class="idea-card"><div class="name">🤖 Agent Company</div><div class="detail">Agent-basierte "Firma". Zu früh — nach ersten zahlenden Kunden.</div></div>
+  <div class="idea-card"><div class="name">🌐 Domain-Suche</div><div class="detail">vorsprung.io vergeben. Naming-Runde läuft!</div></div>
+  <div class="idea-card"><div class="name">🔊 Voice-to-Voice</div><div class="detail">ElevenLabs TTS ✅ — Realtime Voice-Call noch offen.</div></div>
+  <div class="idea-card"><div class="name">🚌 RMV API</div><div class="detail">HAFAS Key beantragen für ÖPNV.</div></div>
+  <div class="idea-card"><div class="name">📦 ClawHub Skills</div><div class="detail">Gmail, Supabase, ElevenLabs TTS → veröffentlichen.</div></div>
 </div>
 
 <!-- Quick Links -->
 <h2>🔗 Quick Links</h2>
-<div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-  <a href="https://drive.google.com/drive/folders/1C2pxxckFSOPj-iklZcf77yLlKu5sA2ad" style="background:#fff; padding:0.5rem 1rem; border-radius:12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration:none; color:#222; font-size:0.85rem; font-weight:500;">📁 HATTI_ (Drive)</a>
-  <a href="https://drive.google.com/drive/folders/1B-ECQX6RMS91VlKi4bH7z1WFS4_GVN8Q" style="background:#fff; padding:0.5rem 1rem; border-radius:12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration:none; color:#222; font-size:0.85rem; font-weight:500;">📁 Kim / Weber</a>
-  <a href="https://github.com/danielmehlhart-bit/architekt-connect" style="background:#fff; padding:0.5rem 1rem; border-radius:12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration:none; color:#222; font-size:0.85rem; font-weight:500;">🐙 Architekt Connect</a>
-  <a href="https://github.com/danielmehlhart-bit/photobpp-organizer" style="background:#fff; padding:0.5rem 1rem; border-radius:12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration:none; color:#222; font-size:0.85rem; font-weight:500;">🐙 BPP CRM</a>
-  <a href="https://github.com/danielmehlhart-bit/concordv3" style="background:#fff; padding:0.5rem 1rem; border-radius:12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration:none; color:#222; font-size:0.85rem; font-weight:500;">🐙 Concord</a>
+<div class="links">
+  <a class="link-chip" href="https://drive.google.com/drive/folders/1C2pxxckFSOPj-iklZcf77yLlKu5sA2ad">📁 HATTI_ (Drive)</a>
+  <a class="link-chip" href="https://drive.google.com/drive/folders/1B-ECQX6RMS91VlKi4bH7z1WFS4_GVN8Q">📁 Kim / Weber</a>
+  <a class="link-chip" href="https://github.com/danielmehlhart-bit/architekt-connect">🐙 Architekt Connect</a>
+  <a class="link-chip" href="https://github.com/danielmehlhart-bit/photobpp-organizer">🐙 BPP CRM</a>
+  <a class="link-chip" href="https://github.com/danielmehlhart-bit/concordv3">🐙 Concord</a>
 </div>
 
-<!-- Compass -->
+<!-- Kompass -->
 <h2>🧭 Kompass</h2>
-<div class="card" style="background: linear-gradient(135deg, #fafafa, #f0f0f0); border: 1px solid #eee;">
-  <div style="font-size: 1.05rem; font-weight: 600; color: #222; font-style: italic; margin-bottom: 0.8rem;">"Baue ich ein Produkt — oder baue ich Projekte?"</div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem;">
-    <div style="color: #2e7d32;">✓ Früh Geld nehmen</div>
-    <div style="color: #c62828;">✗ Zu individuell werden</div>
-    <div style="color: #2e7d32;">✓ Klarer Core, wiederverwendbar</div>
-    <div style="color: #c62828;">✗ Zu früh skalieren</div>
-    <div style="color: #2e7d32;">✓ Messbare Outcomes</div>
-    <div style="color: #c62828;">✗ Preise aus Angst senken</div>
+<div class="compass">
+  <div class="question">"Baue ich ein Produkt — oder baue ich Projekte?"</div>
+  <div class="compass-grid">
+    <div class="compass-do">✓ Früh Geld nehmen</div>
+    <div class="compass-dont">✗ Zu individuell werden</div>
+    <div class="compass-do">✓ Klarer Core, wiederverwendbar</div>
+    <div class="compass-dont">✗ Zu früh skalieren</div>
+    <div class="compass-do">✓ Messbare Outcomes</div>
+    <div class="compass-dont">✗ Preise aus Angst senken</div>
   </div>
 </div>
 
-<div class="footer">
-  Hatti 🏔️ · Sag "Update Dashboard" für eine frische Version · Strg+P → PDF
-</div>
+<div class="footer">Hatti 🏔️ · Sag "Update Dashboard" für eine frische Version · Strg+P → PDF</div>
 
 </div>
 </body>
