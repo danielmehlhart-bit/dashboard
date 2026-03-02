@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architekt Connect — Agentic Vision</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; padding: 2rem; max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 2rem; color: #fff; margin-bottom: 0.3rem; }
+  .subtitle { color: #888; font-size: 1.1rem; margin-bottom: 2.5rem; }
+  h2 { font-size: 1.4rem; color: #fff; margin: 2.5rem 0 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+  h3 { font-size: 1.1rem; color: #ccc; margin: 1.5rem 0 0.5rem; }
+  p, li { color: #bbb; font-size: 0.95rem; }
+  p { margin-bottom: 1rem; }
+  ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.4rem; }
+  .highlight { background: #1a1a2e; border-left: 3px solid #4a9eff; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+  .highlight strong { color: #4a9eff; }
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  .vs-card { background: #141414; border-radius: 10px; padding: 1.2rem; border: 1px solid #222; }
+  .vs-card.them { border-color: #444; }
+  .vs-card.us { border-color: #4a9eff; }
+  .vs-card h4 { font-size: 0.9rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+  .vs-card.us h4 { color: #4a9eff; }
+  .agent-card { background: #141420; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border: 1px solid #252540; position: relative; overflow: hidden; }
+  .agent-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, #4a9eff, #7c3aed); }
+  .agent-card .emoji { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .agent-card h3 { color: #fff; margin: 0.3rem 0; }
+  .agent-card .role { color: #4a9eff; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .agent-card p { font-size: 0.9rem; }
+  .phase { background: #141414; border-radius: 10px; padding: 1.2rem 1.5rem; margin: 0.8rem 0; border: 1px solid #222; }
+  .phase .label { display: inline-block; background: #4a9eff22; color: #4a9eff; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem; text-transform: uppercase; }
+  .phase.future .label { background: #7c3aed22; color: #7c3aed; }
+  .moat { background: linear-gradient(135deg, #1a1a2e, #0d1117); border: 1px solid #333; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+  .moat h3 { color: #fff; }
+  .quote { font-style: italic; color: #888; border-left: 2px solid #444; padding-left: 1rem; margin: 1.5rem 0; }
+  @media (max-width: 600px) { .vs-grid { grid-template-columns: 1fr; } body { padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<h1>🏗️ Architekt Connect — Agentic Vision</h1>
+<p class="subtitle">Von PM-Tool zu AI-Kollegenschaft. Warum ein Solo-Founder mit Agent-First-Denke die Branche aufmischen kann.</p>
+
+<h2>1. Dein unfairer Vorteil (vs. 9 Wettbewerber)</h2>
+
+<p>Du hast 9 Konkurrenten analysiert. Die gute Nachricht: <strong>Keiner von denen denkt AI-native.</strong> Compa klebt vielleicht irgendwann ein ChatGPT-Widget rein. KOBOLD wird noch 5 Jahre brauchen, bis sie ihren Legacy-Monolith modernisiert haben. Die anderen sind Nischentools oder tot.</p>
+
+<div class="vs-grid">
+  <div class="vs-card them">
+    <h4>🏢 Die Etablierten</h4>
+    <ul>
+      <li><strong>KOBOLD</strong> — Overkill, teuer, 90er-UX, kein Mobile</li>
+      <li><strong>Compa</strong> — Stark bei AVA/HOAI, aber kein PM, kein Finance, kein Voice</li>
+      <li><strong>PlanRadar</strong> — Nur Mängelmanagement, kein Büro-PM</li>
+      <li><strong>Buildup</strong> — Baustellenfokus, nicht Büro</li>
+    </ul>
+    <p>→ Alle gebaut für <em>große Teams</em> mit IT-Abteilung und Schulungsbudget</p>
+  </div>
+  <div class="vs-card us">
+    <h4>⚡ Architekt Connect</h4>
+    <ul>
+      <li><strong>Voice-First</strong> — Bautagebuch per Sprache, auf der Baustelle</li>
+      <li><strong>All-in-One</strong> — PM + HOAI + Finance + Doku in einer App</li>
+      <li><strong>Klein & schnell</strong> — Gebaut für 3-15 Leute ohne IT</li>
+      <li><strong>Mobile-native</strong> — PWA, funktioniert am Handy</li>
+    </ul>
+    <p>→ Gebaut für <em>das Büro das sich kein KOBOLD leisten kann und will</em></p>
+  </div>
+</div>
+
+<div class="highlight">
+  <strong>Kernthese:</strong> Compa und KOBOLD sind Software-Firmen die Tools für Architekten bauen. Du bist ein Operations-Denker der versteht wie kleine Teams wirklich arbeiten — chaotisch, unterbesetzt, mit dem Handy auf der Baustelle. Das ist ein fundamental anderer Ausgangspunkt.
+</div>
+
+<h2>2. Warum Solo = Stärke (nicht Schwäche)</h2>
+
+<p>Dein innerer Kritiker sagt "ich bin ja nur allein". Aber:</p>
+
+<ul>
+  <li><strong>Speed:</strong> Du deployest in Stunden, nicht Quartalen. Kim meldet einen Bug → am selben Abend gefixt.</li>
+  <li><strong>Nähe:</strong> Du sitzt in Oberursel, deine Pilotkunden sind um die Ecke. Compa sitzt in Wien und macht Zoom-Calls.</li>
+  <li><strong>AI-Leverage:</strong> Du baust mit Lovable + Supabase + AI-Agents. Ein Solo-Founder 2026 hat die Produktivität eines 5-Personen-Teams 2020.</li>
+  <li><strong>Zero Overhead:</strong> Keine Investoren, kein Board, kein "aber das passt nicht in unsere Roadmap". Du baust was Kim braucht, morgen.</li>
+  <li><strong>Authentizität:</strong> "Gebaut von einem Hessen, für hessische Architekten" schlägt "Enterprise Solution powered by AI" — besonders bei KMU.</li>
+</ul>
+
+<h2>3. Die Agentic Vision — Das Büro das nie schläft</h2>
+
+<p>Hier wird's spannend. Die Frage ist nicht "wie baue ich AI-Features in ein PM-Tool". Die Frage ist:</p>
+
+<div class="quote">
+  "Was wenn Architekt Connect nicht ein Tool ist, sondern ein digitaler Kollege — der mitdenkt, mitarbeitet und Probleme findet bevor sie entstehen?"
+</div>
+
+<p>Stell dir vor: Ein Architekturbüro mit 5 Menschen + 5 AI-Agents. Die Agents sind keine Chatbots. Sie sind <strong>spezialisierte Mitarbeiter</strong> mit klaren Rollen, die im Hintergrund arbeiten und sich melden wenn es was gibt.</p>
+
+<div class="agent-card">
+  <div class="emoji">📋</div>
+  <h3>Doku-Agent</h3>
+  <div class="role">Rolle: Bautagebuch & Compliance</div>
+  <p>Hört Voice-Einträge, reichert automatisch mit Wetter, GPS, Datum an. Erkennt ob HOAI-relevante Dokumentation fehlt. Warnt: <em>"Projekt Lindenstraße 18: Seit 14 Tagen kein Bautagebuch-Eintrag. HOAI LP8 verlangt lückenlose Dokumentation."</em> Generiert am Monatsende den fertigen Baubericht — HOAI-konform, mit Fotos, zum Unterschreiben.</p>
+</div>
+
+<div class="agent-card">
+  <div class="emoji">📬</div>
+  <h3>Inbox-Agent</h3>
+  <div class="role">Rolle: Email-Triage & Task-Extraktion</div>
+  <p>Liest Projekt-Emails (mit Erlaubnis), erkennt: <em>"Statiker hat Bewehrungsplan geschickt → neuer Task 'Bewehrungsplan prüfen' in Projekt XY, Deadline Freitag."</em> Sortiert Spam vs. Projektrelevant. Fasst tägliche Email-Flut in 3-Satz-Summaries zusammen. <strong>Ersetzt 30-50% der Email-Zeit</strong> — exakt Kims Hauptschmerz.</p>
+</div>
+
+<div class="agent-card">
+  <div class="emoji">💰</div>
+  <h3>Controller-Agent</h3>
+  <div class="role">Rolle: Budget, Timeline, Frühwarnsystem</div>
+  <p>Überwacht Stundenkonten, Budgets, Projektphasen. Meldet proaktiv: <em>"Projekt Friedberger Anlage: 78% des Stundenbudgets verbraucht, aber erst in LP5 von 8. Bei aktuellem Tempo wird das Budget in 3 Wochen überschritten."</em> Schlägt Gegenmaßnahmen vor. Erstellt monatliche Rentabilitätsberichte — ohne dass jemand Excel öffnen muss.</p>
+</div>
+
+<div class="agent-card">
+  <div class="emoji">🗓️</div>
+  <h3>Koordinator-Agent</h3>
+  <div class="role">Rolle: Terminplanung & Fachplaner-Koordination</div>
+  <p>Kennt alle Projektphasen, Deadlines, Abhängigkeiten. Erkennt Konflikte: <em>"Baubesprechung Mittwoch kollidiert mit Abgabe Entwurfsplanung Donnerstag — Paul hat noch 12h offene Tasks dafür."</em> Schickt automatisch Erinnerungen an Fachplaner wenn Zulieferungen überfällig sind. Hält die Baubesprechungs-Agenda aktuell.</p>
+</div>
+
+<div class="agent-card">
+  <div class="emoji">📸</div>
+  <h3>Baustellen-Agent</h3>
+  <div class="role">Rolle: Foto-Analyse & Mängeltracking</div>
+  <p>Analysiert Baustellenfotos mit Vision AI. Erkennt: Baufortschritt, potenzielle Mängel, Abweichungen vom Plan. <em>"Foto vom 28.02.: Fensterlaibung EG links — Maß weicht ~8cm vom Plan ab. Soll ich einen Mangel anlegen?"</em> Baut über Zeit eine visuelle Projekthistorie auf — vom Erdaushub bis zur Abnahme.</p>
+</div>
+
+<h2>4. Was das bedeutet: Das "Agent Layer" Konzept</h2>
+
+<p>Technisch gedacht hat Architekt Connect drei Schichten:</p>
+
+<div class="phase">
+  <span class="label">Schicht 1 — Human Layer (jetzt)</span>
+  <p>Das PM-Tool wie es heute existiert. Dashboard, Tasks, Kanban, Zeiterfassung, Bautagebuch, Voice-to-Task. Menschen arbeiten direkt damit. <strong>Das ist dein MVP und das bleibt die Basis.</strong></p>
+</div>
+
+<div class="phase">
+  <span class="label">Schicht 2 — AI-Assist Layer (nächste 3-6 Monate)</span>
+  <p>AI hilft Menschen besser zu arbeiten: Intelligente Vorschläge, Auto-Kategorisierung, Smart Search ("Zeig mir alle offenen Mängel in LP8-Projekten"), Template-Generierung, Meeting-Summaries. Der Mensch entscheidet, die AI beschleunigt.</p>
+</div>
+
+<div class="phase future">
+  <span class="label">Schicht 3 — Agent Layer (6-18 Monate)</span>
+  <p>AI-Agents als eigenständige Akteure im System. Sie haben Rollen, Berechtigungen, und handeln autonom innerhalb definierter Grenzen. Der Mensch gibt Richtung vor und approved kritische Entscheidungen — aber der Agent arbeitet selbständig. <strong>Das ist der Moat.</strong></p>
+</div>
+
+<h2>5. Warum das ein Moat ist</h2>
+
+<div class="moat">
+  <h3>🏰 Daten-Moat</h3>
+  <p>Jedes Büro das Architekt Connect nutzt, trainiert implizit die Agents. Nach 12 Monaten weiß dein System: Wie lange dauert LP3 typischerweise bei einem EFH? Was sind die häufigsten Mängel bei Bestandssanierungen? Welche Fachplaner liefern immer zu spät? <strong>Diese Daten hat kein KOBOLD, kein Compa.</strong> Weil die keine Agent-Infrastruktur haben die daraus lernt.</p>
+</div>
+
+<div class="moat">
+  <h3>🔄 Workflow-Moat</h3>
+  <p>Agents die sich an die Arbeitsweise eines spezifischen Büros anpassen = Switching Costs die durch die Decke gehen. Wenn der Inbox-Agent nach 6 Monaten weiß welche Emails Kim sofort sehen muss und welche warten können — wechselt Kim nicht mehr zu Compa. Niemals.</p>
+</div>
+
+<div class="moat">
+  <h3>⚡ Speed-Moat</h3>
+  <p>Große Firmen brauchen 2-3 Jahre um Agent-Infrastruktur zu bauen. Du baust mit LLM-APIs, Supabase Edge Functions und einem schlanken Agent-Framework. Dein Vorteil: Du hast keinen Legacy-Code der dich bremst. Greenfield + AI-native + Solo-Speed = 12 Monate Vorsprung.</p>
+</div>
+
+<h2>6. Konkrete nächste Schritte</h2>
+
+<div class="highlight">
+  <strong>Wichtig:</strong> Die Vision ist groß, aber der Weg dahin ist inkrementell. Nicht alles auf einmal bauen. Jeder Schritt muss für sich Wert liefern.
+</div>
+
+<div class="phase">
+  <span class="label">Jetzt → Pilot abschließen</span>
+  <p>MVP fertig machen, Kim & Paul onboarden, erstes Feedback. Voice-to-Task muss sitzen. Bautagebuch mit Fotos muss sitzen. <strong>Ohne glücklichen ersten Kunden ist alles andere Theorie.</strong></p>
+</div>
+
+<div class="phase">
+  <span class="label">Q2 2026 → AI-Assist einführen</span>
+  <p>Erster Agent: <strong>Inbox-Agent</strong> (weil Email = größter Schmerz). Liest Projekt-Emails, erstellt Task-Vorschläge. Kim approved per Klick. Zweiter: Smart Bautagebuch (Auto-Wetter, Auto-HOAI-Tags, Vollständigkeitscheck).</p>
+</div>
+
+<div class="phase future">
+  <span class="label">Q3-Q4 2026 → Agent Layer Beta</span>
+  <p>Controller-Agent für Budget-Monitoring. Koordinator für Deadline-Tracking. Agents bekommen ein eigenes Dashboard: "Was haben deine digitalen Kollegen heute gemacht?" Transparenz + Trust aufbauen.</p>
+</div>
+
+<div class="phase future">
+  <span class="label">2027 → Das digitale Architekturbüro</span>
+  <p>Vision: Ein 5-Personen-Büro arbeitet mit Architekt Connect wie ein 10-Personen-Büro. Nicht weil die Menschen mehr arbeiten, sondern weil 5 AI-Agents die Routinearbeit übernehmen. <strong>Pricing: Nicht pro User, sondern pro "Team" (Menschen + Agents).</strong></p>
+</div>
+
+<h2>7. Pitch in einem Satz</h2>
+
+<div class="highlight" style="border-left-color: #7c3aed; text-align: center; font-size: 1.1rem;">
+  <strong>"Architekt Connect gibt kleinen Büros ein Team aus AI-Kollegen — damit 5 Leute schaffen, wofür andere 10 brauchen."</strong>
+</div>
+
+<p style="color: #555; margin-top: 3rem; font-size: 0.85rem; text-align: center;">Erstellt am 2. März 2026 · Hatti 🏔️</p>
+
+</body>
+</html>

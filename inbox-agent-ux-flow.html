@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inbox-Agent — UX & User Flow</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 2rem; color: #fff; margin-bottom: 0.3rem; }
+  .subtitle { color: #888; font-size: 1.05rem; margin-bottom: 2.5rem; }
+  h2 { font-size: 1.35rem; color: #fff; margin: 2.5rem 0 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+  h3 { font-size: 1.1rem; color: #ccc; margin: 1.5rem 0 0.5rem; }
+  p, li { color: #bbb; font-size: 0.95rem; }
+  p { margin-bottom: 1rem; }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.4rem; }
+  .highlight { background: #1a1a2e; border-left: 3px solid #4a9eff; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+  .highlight strong { color: #4a9eff; }
+  .highlight.warn { border-left-color: #f59e0b; }
+  .highlight.warn strong { color: #f59e0b; }
+  .highlight.green { border-left-color: #10b981; }
+  .highlight.green strong { color: #10b981; }
+  code { background: #1a1a1a; color: #4a9eff; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.88rem; }
+
+  /* Flow Steps */
+  .flow { position: relative; margin: 1.5rem 0 1.5rem 1.5rem; padding-left: 2rem; border-left: 2px solid #333; }
+  .flow-step { position: relative; margin-bottom: 2rem; }
+  .flow-step::before { content: ''; position: absolute; left: -2.65rem; top: 0.35rem; width: 12px; height: 12px; border-radius: 50%; background: #4a9eff; border: 2px solid #0a0a0a; }
+  .flow-step.user::before { background: #10b981; }
+  .flow-step.system::before { background: #7c3aed; }
+  .flow-step .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .flow-step .tag.user-tag { background: #10b98122; color: #10b981; }
+  .flow-step .tag.system-tag { background: #7c3aed22; color: #7c3aed; }
+  .flow-step .tag.agent-tag { background: #4a9eff22; color: #4a9eff; }
+  .flow-step h4 { color: #fff; font-size: 1rem; margin-bottom: 0.3rem; }
+  .flow-step p { font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+  /* Mockup */
+  .mockup { background: #111; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; margin: 1.5rem 0; }
+  .mockup-header { background: #1a1a1a; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #222; }
+  .mockup-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mockup-dot.r { background: #ff5f57; }
+  .mockup-dot.y { background: #febc2e; }
+  .mockup-dot.g { background: #28c840; }
+  .mockup-title { color: #888; font-size: 0.8rem; margin-left: 0.5rem; }
+  .mockup-body { padding: 1.2rem; }
+
+  .email-item { background: #1a1a1a; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.6rem; border: 1px solid #252525; display: flex; gap: 1rem; align-items: flex-start; }
+  .email-item .indicator { width: 4px; min-height: 100%; border-radius: 2px; flex-shrink: 0; }
+  .email-item .indicator.urgent { background: #ef4444; }
+  .email-item .indicator.action { background: #f59e0b; }
+  .email-item .indicator.info { background: #6b7280; }
+  .email-item .content { flex: 1; }
+  .email-item .from { color: #fff; font-size: 0.85rem; font-weight: 600; }
+  .email-item .subject { color: #bbb; font-size: 0.82rem; margin: 0.2rem 0; }
+  .email-item .ai-summary { color: #4a9eff; font-size: 0.8rem; font-style: italic; margin: 0.3rem 0 0; }
+  .email-item .actions { display: flex; gap: 0.4rem; margin-top: 0.5rem; }
+  .email-item .btn { font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 5px; border: 1px solid #333; color: #ccc; background: #1f1f1f; cursor: pointer; }
+  .email-item .btn.primary { background: #4a9eff22; border-color: #4a9eff44; color: #4a9eff; }
+  .email-item .btn.green { background: #10b98122; border-color: #10b98144; color: #10b981; }
+
+  .task-suggestion { background: #141420; border: 1px solid #252540; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.6rem; }
+  .task-suggestion .project { color: #7c3aed; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+  .task-suggestion .title { color: #fff; font-size: 0.9rem; margin: 0.2rem 0; }
+  .task-suggestion .meta { color: #666; font-size: 0.8rem; }
+  .task-suggestion .actions { display: flex; gap: 0.4rem; margin-top: 0.5rem; }
+
+  /* Tech cards */
+  .tech-card { background: #141414; border-radius: 10px; padding: 1.2rem; margin: 0.8rem 0; border: 1px solid #222; }
+  .tech-card h4 { color: #fff; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .tech-card .pro { color: #10b981; }
+  .tech-card .con { color: #ef4444; }
+
+  .arch-diagram { background: #0d0d1a; border: 1px solid #252540; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #888; line-height: 1.9; white-space: pre; overflow-x: auto; }
+  .arch-diagram .label { color: #4a9eff; }
+  .arch-diagram .arrow { color: #555; }
+  .arch-diagram .component { color: #ccc; }
+
+  @media (max-width: 600px) { body { padding: 1rem; } .email-item { flex-direction: column; gap: 0.5rem; } }
+</style>
+</head>
+<body>
+
+<h1>📬 Inbox-Agent — UX & User Flow</h1>
+<p class="subtitle">Wie Kim ihre 30-50% Email-Zeit auf 10% drückt — mit M365-Anbindung und einem Agent der mitdenkt.</p>
+
+<h2>1. M365-Anbindung: Wie kommt man an die Emails?</h2>
+
+<p>Weber Architekten hat M365 Business Basic (oder ähnlich). Die gute Nachricht: <strong>Microsoft Graph API</strong> ist in jeder M365-Lizenz enthalten — auch in den kleinen. Du brauchst kein Enterprise.</p>
+
+<div class="tech-card">
+  <h4>🔑 OAuth2 + Microsoft Graph API</h4>
+  <p>So funktioniert's: Du registrierst Architekt Connect als App in Microsofts Azure AD (Entra ID). Kim klickt einmal "Erlauben" — fertig. Ab dann kann dein Inbox-Agent ihre Emails lesen.</p>
+  <ul>
+    <li><strong>Scope:</strong> <code>Mail.Read</code> — nur lesen, nie senden oder löschen</li>
+    <li><strong>Kosten:</strong> 0€ — Graph API ist in jeder M365-Lizenz inkludiert</li>
+    <li><strong>DSGVO:</strong> Daten bleiben bei Microsoft, dein Agent liest nur Metadaten + Body on-demand</li>
+    <li><strong>Kein Admin nötig:</strong> Bei kleinen Büros ohne IT-Admin kann jeder User selbst consenten</li>
+  </ul>
+</div>
+
+<div class="highlight warn">
+  <strong>Wichtig — Privacy by Design:</strong> Der Inbox-Agent liest nicht ALLE Emails. Er liest nur Emails die mit Projekten matchen (Absender, Betreff, Keywords). Private Emails, Newsletter, HR-Kram = unsichtbar. Das muss Kim <em>sehen und verstehen</em>, sonst fehlt das Vertrauen.
+</div>
+
+<h2>2. Onboarding-Flow — "In 3 Klicks zum Inbox-Agent"</h2>
+
+<p>Der kritischste Moment: Kim muss ihren Email-Zugang freigeben. Das muss sich anfühlen wie "Google Calendar verbinden", nicht wie "IT-Projekt starten".</p>
+
+<div class="flow">
+  <div class="flow-step user">
+    <span class="tag user-tag">Kim</span>
+    <h4>Klickt "Email verbinden" in den Einstellungen</h4>
+    <p>Prominenter Button, keine versteckte Option. Vielleicht sogar ein Nudge auf dem Dashboard: <em>"Dein Inbox-Agent wartet — verbinde deine Emails und spar 2h pro Tag."</em></p>
+  </div>
+
+  <div class="flow-step system">
+    <span class="tag system-tag">System</span>
+    <h4>Microsoft OAuth-Dialog öffnet sich</h4>
+    <p>Standard Microsoft-Login. Kim sieht: <em>"Architekt Connect möchte Ihre Emails lesen."</em> Vertrauter Dialog, kennt jeder von Teams/Outlook-Add-ins.</p>
+  </div>
+
+  <div class="flow-step user">
+    <span class="tag user-tag">Kim</span>
+    <h4>Klickt "Zulassen"</h4>
+    <p>Ein Klick. Fertig. Redirect zurück zu Architekt Connect.</p>
+  </div>
+
+  <div class="flow-step system">
+    <span class="tag system-tag">System</span>
+    <h4>Projekt-Mapping Setup</h4>
+    <p>Der Agent schaut sich Kims bestehende Projekte an und schlägt vor: <em>"Soll ich Emails von statiker@mueller.de dem Projekt 'Lindenstraße 18' zuordnen?"</em> Kim bestätigt oder korrigiert. Das System lernt.</p>
+  </div>
+
+  <div class="flow-step">
+    <span class="tag agent-tag">Inbox-Agent</span>
+    <h4>Erster Scan — die letzten 7 Tage</h4>
+    <p>Der Agent liest die letzten 7 Tage Emails, ordnet sie Projekten zu, und präsentiert Kim ein Dashboard: <em>"Ich hab 47 Emails analysiert. 12 sind projektrelevant. 3 enthalten offene Aufgaben."</em></p>
+  </div>
+</div>
+
+<h2>3. Täglicher Flow — So arbeitet Kim mit dem Inbox-Agent</h2>
+
+<p>Kims Morgen heute: Outlook öffnen → 30 Emails scannen → mental sortieren → Tasks im Kopf merken → vergessen → Stress.</p>
+<p>Kims Morgen mit Inbox-Agent:</p>
+
+<div class="mockup">
+  <div class="mockup-header">
+    <span class="mockup-dot r"></span>
+    <span class="mockup-dot y"></span>
+    <span class="mockup-dot g"></span>
+    <span class="mockup-title">Architekt Connect — Inbox</span>
+  </div>
+  <div class="mockup-body">
+    <p style="color: #888; font-size: 0.8rem; margin-bottom: 0.8rem;">📬 <strong style="color: #fff;">3 neue Projekt-Emails</strong> seit gestern Abend · 24 weitere gefiltert (Newsletter, CC, Info)</p>
+
+    <div class="email-item">
+      <div class="indicator urgent"></div>
+      <div class="content">
+        <div class="from">Ing.-Büro Müller (Statik)</div>
+        <div class="subject">Bewehrungsplan EG — finale Version</div>
+        <div class="ai-summary">🤖 Enthält PDF-Anhang "Bewehrungsplan_EG_v3_final.pdf". Bezieht sich auf Projekt Lindenstraße 18. Vorherige Version war v2 vom 12.02.</div>
+        <div class="actions">
+          <span class="btn primary">→ Task erstellen</span>
+          <span class="btn">In Outlook öffnen</span>
+          <span class="btn">Ignorieren</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="indicator action"></div>
+      <div class="content">
+        <div class="from">Bauherr Familie Schmidt</div>
+        <div class="subject">Re: Küchengrundriss — können wir die Wand doch stehen lassen?</div>
+        <div class="ai-summary">🤖 Änderungswunsch: Bauherr will die Wand zwischen Küche und Flur jetzt doch behalten. Widerspricht Entwurf v2. Braucht Rückmeldung bis Freitag.</div>
+        <div class="actions">
+          <span class="btn primary">→ Task erstellen</span>
+          <span class="btn green">→ Schnellantwort vorschlagen</span>
+          <span class="btn">In Outlook öffnen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="indicator info"></div>
+      <div class="content">
+        <div class="from">Bauamt Frankfurt</div>
+        <div class="subject">Baugenehmigung Az. 2024/1847 — Bescheid</div>
+        <div class="ai-summary">🤖 Baugenehmigung erteilt! Projekt Friedberger Anlage. Auflagen: 3 Stück (siehe Anhang S.4). Meilenstein "Baugenehmigung" kann als erledigt markiert werden.</div>
+        <div class="actions">
+          <span class="btn green">✓ Meilenstein erledigen</span>
+          <span class="btn primary">→ Task: Auflagen prüfen</span>
+          <span class="btn">In Outlook öffnen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="text-align: center; color: #666; font-size: 0.85rem;">↑ Das sieht Kim morgens in Architekt Connect. Statt 30 Emails = 3 relevante, vorverdaut.</p>
+
+<h2>4. Task-Extraktion — "Ein Klick zum Task"</h2>
+
+<p>Wenn Kim auf "→ Task erstellen" klickt, passiert kein leeres Formular. Der Agent hat schon vorausgefüllt:</p>
+
+<div class="mockup">
+  <div class="mockup-header">
+    <span class="mockup-dot r"></span>
+    <span class="mockup-dot y"></span>
+    <span class="mockup-dot g"></span>
+    <span class="mockup-title">Task aus Email erstellen</span>
+  </div>
+  <div class="mockup-body">
+    <div class="task-suggestion">
+      <div class="project">📁 Lindenstraße 18 — LP5 Ausführungsplanung</div>
+      <div class="title">Bewehrungsplan EG v3 prüfen & freigeben</div>
+      <div class="meta">
+        Vorschlag: Zugewiesen an <strong style="color:#ccc">Paul</strong> · Deadline <strong style="color:#ccc">Do, 06.03.</strong> · Priorität <strong style="color:#f59e0b">Mittel</strong><br>
+        📎 Anhang verlinkt: Bewehrungsplan_EG_v3_final.pdf<br>
+        💬 Kontext: <em>"Finale Version nach Korrektur der Stützweiten im Flur (vgl. Email 12.02.)"</em>
+      </div>
+      <div class="actions">
+        <span class="btn green">✓ Task erstellen</span>
+        <span class="btn">Bearbeiten</span>
+        <span class="btn">Verwerfen</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight green">
+  <strong>Der Clou:</strong> Kim muss nicht tippen. Der Agent kennt das Projekt (aus Absender + Betreff), schlägt die richtige Person vor (Paul macht Statik-Prüfungen), setzt eine realistische Deadline, und verlinkt den Anhang. Kim klickt "✓" — 3 Sekunden statt 3 Minuten.
+</div>
+
+<h2>5. Proaktive Intelligenz — Der Agent denkt mit</h2>
+
+<p>Der Inbox-Agent ist nicht nur ein Email-Sortierer. Er lernt Muster und wird proaktiv:</p>
+
+<ul>
+  <li><strong>Überfälligkeits-Tracking:</strong> <em>"Statiker Müller sollte den Bewehrungsplan bis Montag liefern (laut Email vom 20.02.). Heute ist Donnerstag — noch keine Mail. Soll ich eine Erinnerungs-Email vorschlagen?"</em></li>
+  <li><strong>Duplikat-Erkennung:</strong> <em>"Familie Schmidt hat den Küchenwunsch schon am 15.01. erwähnt — Task existiert bereits. Soll ich den Task updaten statt neu anlegen?"</em></li>
+  <li><strong>Eskalation:</strong> <em>"3 unbeantwortete Emails vom Bauamt in 2 Wochen → Priorität hochgestuft."</em></li>
+  <li><strong>Digest:</strong> Freitag 16:00 automatischer Wochenrückblick: <em>"Diese Woche: 12 Projekt-Emails → 8 Tasks erstellt → 5 erledigt → 3 offen."</em></li>
+</ul>
+
+<h2>6. Technische Architektur — Einfach gehalten</h2>
+
+<div class="arch-diagram">
+<span class="component">Kim's Outlook (M365)</span>
+       <span class="arrow">│</span>
+       <span class="arrow">▼</span>  <span class="label">Microsoft Graph API</span> (OAuth2, Mail.Read)
+       <span class="arrow">│</span>
+       <span class="arrow">▼</span>
+<span class="component">Supabase Edge Function</span> <span class="label">"inbox-agent"</span>
+  <span class="arrow">├──</span> Polling alle 5 Min (oder Graph Webhook für Realtime)
+  <span class="arrow">├──</span> Email lesen → Projekt-Matching (Absender-Map + NLP)
+  <span class="arrow">├──</span> LLM-Call: Zusammenfassung + Task-Extraktion
+  <span class="arrow">└──</span> Ergebnis → Supabase DB <span class="label">"inbox_items"</span> Tabelle
+       <span class="arrow">│</span>
+       <span class="arrow">▼</span>
+<span class="component">Architekt Connect Frontend</span>
+  <span class="arrow">├──</span> Inbox-View (Realtime via Supabase Subscriptions)
+  <span class="arrow">├──</span> Task-Erstellung (1-Click aus Suggestion)
+  <span class="arrow">└──</span> Feedback-Loop (Kim korrigiert → Agent lernt)
+</div>
+
+<div class="tech-card">
+  <h4>Warum Supabase Edge Function?</h4>
+  <ul>
+    <li>Läuft serverless, keine Infrastruktur-Wartung</li>
+    <li>Direct DB-Access (kein extra API Layer)</li>
+    <li>Deno Runtime = TypeScript, passt zu deinem Stack</li>
+    <li>Cron-Trigger: Supabase <code>pg_cron</code> → Edge Function alle 5 Min</li>
+    <li>Kosten: ~$0.01-0.05 pro 100 Emails (LLM-Token für Summaries)</li>
+  </ul>
+</div>
+
+<div class="tech-card">
+  <h4>Graph API — Was du brauchst</h4>
+  <ul>
+    <li><strong>App Registration:</strong> Azure Portal → App registrieren (kostenlos, auch ohne Azure-Abo)</li>
+    <li><strong>Permissions:</strong> <code>Mail.Read</code> (delegated) — User-Consent reicht, kein Admin</li>
+    <li><strong>Token Storage:</strong> Refresh Token in Supabase (encrypted), auto-refresh</li>
+    <li><strong>Webhook (optional):</strong> <code>subscriptions</code> API für Push statt Polling — spart Calls</li>
+    <li><strong>Rate Limit:</strong> 10.000 Requests/10 Min — mehr als genug für kleine Büros</li>
+  </ul>
+</div>
+
+<h2>7. Datenschutz — Vertrauen ist alles</h2>
+
+<div class="highlight warn">
+  <strong>DSGVO-Strategie: Minimal-Prinzip</strong>
+</div>
+
+<ul>
+  <li><strong>Kein Email-Inhalt speichern.</strong> Der Agent liest die Email, extrahiert Summary + Tasks, und speichert nur die Extraktion. Der volle Email-Body bleibt bei Microsoft.</li>
+  <li><strong>Projekt-Filter first.</strong> Nur Emails von bekannten Projekt-Kontakten werden analysiert. Alles andere = unsichtbar.</li>
+  <li><strong>Transparenz-Log.</strong> Kim sieht jederzeit: "Der Agent hat heute 47 Emails gesehen, 12 analysiert, 35 ignoriert." Kein Blackbox-Gefühl.</li>
+  <li><strong>Jederzeit trennbar.</strong> Ein Klick "Email trennen" → OAuth revoken → fertig. Keine Datenleichen.</li>
+  <li><strong>AVV mit Kim's Büro.</strong> Auftragsverarbeitungsvertrag — muss sein, ist bei M365-Integration Standard. Template reicht.</li>
+</ul>
+
+<h2>8. Pricing-Implikation</h2>
+
+<p>Der Inbox-Agent ist ein <strong>Premium-Feature</strong>. Das ist dein Upsell von der Basis-PM-Lizenz:</p>
+
+<ul>
+  <li><strong>Basis</strong> (79-99€/Monat): PM + Tasks + Bautagebuch + Voice — das Human Layer</li>
+  <li><strong>Pro</strong> (149-199€/Monat): + Inbox-Agent + Controller-Agent + AI-Summaries — das Agent Layer</li>
+  <li><strong>Rechnung für Kim:</strong> "Der Inbox-Agent spart dir 1-2h pro Tag. Das sind ~200-400€/Monat an Arbeitszeit. Du zahlst 100€ mehr. ROI ab Tag 1."</li>
+</ul>
+
+<p style="color: #555; margin-top: 3rem; font-size: 0.85rem; text-align: center;">Erstellt am 2. März 2026 · Hatti 🏔️</p>
+
+</body>
+</html>

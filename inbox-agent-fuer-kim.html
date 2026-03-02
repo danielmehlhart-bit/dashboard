@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dein Email-Assistent — Architekt Connect</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.7; padding: 2rem; max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 1.9rem; color: #111; margin-bottom: 0.2rem; font-weight: 700; }
+  .subtitle { color: #666; font-size: 1.05rem; margin-bottom: 2.5rem; }
+  h2 { font-size: 1.25rem; color: #111; margin: 2.5rem 0 0.8rem; }
+  p { color: #444; font-size: 0.95rem; margin-bottom: 1rem; }
+  strong { color: #111; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #111 0%, #1a1a2e 100%); border-radius: 16px; padding: 2.5rem 2rem; color: #fff; text-align: center; margin-bottom: 2.5rem; }
+  .hero h2 { color: #fff; font-size: 1.6rem; margin: 0 0 0.5rem; }
+  .hero p { color: #aaa; font-size: 1rem; margin: 0; }
+  .hero .big-number { font-size: 3.5rem; font-weight: 800; color: #4a9eff; margin: 1rem 0 0.3rem; }
+  .hero .big-label { color: #888; font-size: 0.9rem; }
+
+  /* Before/After */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+  .compare-card { border-radius: 12px; padding: 1.3rem; }
+  .compare-card.before { background: #fff0f0; border: 1px solid #fecaca; }
+  .compare-card.after { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .compare-card h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+  .compare-card.before h3 { color: #dc2626; }
+  .compare-card.after h3 { color: #16a34a; }
+  .compare-card li { font-size: 0.9rem; color: #555; margin-bottom: 0.4rem; list-style: none; padding-left: 1.5rem; position: relative; }
+  .compare-card.before li::before { content: '✗'; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+  .compare-card.after li::before { content: '✓'; position: absolute; left: 0; color: #16a34a; font-weight: 700; }
+
+  /* Steps */
+  .steps { counter-reset: step; margin: 1.5rem 0; }
+  .step { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; align-items: flex-start; }
+  .step-num { counter-increment: step; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: #111; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+  .step-num::after { content: counter(step); }
+  .step-content h3 { font-size: 1rem; color: #111; margin-bottom: 0.2rem; }
+  .step-content p { font-size: 0.9rem; color: #555; margin-bottom: 0; }
+
+  /* Mockup */
+  .mockup { background: #fff; border: 1px solid #e5e5e5; border-radius: 14px; overflow: hidden; margin: 1.8rem 0; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+  .mockup-bar { background: #f5f5f5; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid #eee; }
+  .mockup-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mockup-dot.r { background: #ff5f57; }
+  .mockup-dot.y { background: #febc2e; }
+  .mockup-dot.g { background: #28c840; }
+  .mockup-body { padding: 1.2rem; }
+
+  .inbox-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .inbox-header h4 { font-size: 0.95rem; color: #111; }
+  .inbox-header .badge { background: #4a9eff; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 10px; }
+  .inbox-subtitle { color: #888; font-size: 0.8rem; margin-bottom: 1rem; }
+
+  .email-card { background: #fafafa; border: 1px solid #eee; border-radius: 10px; padding: 0.9rem 1rem; margin-bottom: 0.7rem; border-left: 4px solid transparent; }
+  .email-card.urgent { border-left-color: #ef4444; }
+  .email-card.action { border-left-color: #f59e0b; }
+  .email-card.good { border-left-color: #22c55e; }
+  .email-card .from { font-weight: 600; font-size: 0.88rem; color: #111; }
+  .email-card .subject { font-size: 0.85rem; color: #555; margin: 0.15rem 0; }
+  .email-card .summary { font-size: 0.83rem; color: #4a9eff; margin: 0.4rem 0 0; padding: 0.4rem 0.6rem; background: #f0f7ff; border-radius: 6px; }
+  .email-card .btns { display: flex; gap: 0.4rem; margin-top: 0.6rem; flex-wrap: wrap; }
+  .email-card .btn { font-size: 0.75rem; padding: 0.3rem 0.7rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+  .email-card .btn.task { background: #111; color: #fff; }
+  .email-card .btn.done { background: #22c55e; color: #fff; }
+  .email-card .btn.reply { background: #f0f0f0; color: #333; }
+  .email-card .btn.open { background: #f0f0f0; color: #333; }
+
+  /* Task preview */
+  .task-preview { background: #f8f7ff; border: 1px solid #e0dff5; border-radius: 10px; padding: 1rem; margin: 1.5rem 0; }
+  .task-preview .label { font-size: 0.72rem; color: #7c3aed; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .task-preview .title { font-size: 1rem; color: #111; font-weight: 600; margin: 0.3rem 0; }
+  .task-preview .details { font-size: 0.85rem; color: #666; }
+  .task-preview .details span { display: inline-block; background: #f0f0f0; padding: 0.15rem 0.5rem; border-radius: 4px; margin: 0.2rem 0.3rem 0.2rem 0; font-size: 0.8rem; }
+
+  /* Outcome cards */
+  .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .outcome { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.2rem; text-align: center; }
+  .outcome .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .outcome .number { font-size: 1.8rem; font-weight: 800; color: #111; }
+  .outcome .label { font-size: 0.8rem; color: #888; }
+
+  /* Privacy */
+  .privacy { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+  .privacy h3 { color: #16a34a; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .privacy li { font-size: 0.88rem; color: #555; margin-bottom: 0.3rem; list-style: none; padding-left: 1.5rem; position: relative; }
+  .privacy li::before { content: '🔒'; position: absolute; left: 0; font-size: 0.8rem; }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, #111, #1a1a2e); border-radius: 14px; padding: 2rem; text-align: center; margin-top: 2.5rem; }
+  .cta h2 { color: #fff; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .cta p { color: #aaa; font-size: 0.95rem; margin: 0; }
+
+  .footer { color: #bbb; font-size: 0.8rem; text-align: center; margin-top: 2rem; }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    .compare, .outcomes { grid-template-columns: 1fr; }
+    .hero .big-number { font-size: 2.5rem; }
+    h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>📬 Dein Email-Assistent</h1>
+<p class="subtitle">Weniger Inbox-Chaos, mehr Zeit für Architektur.</p>
+
+<div class="hero">
+  <h2>Was, wenn deine Emails sich selbst sortieren?</h2>
+  <p>Ein intelligenter Assistent liest deine Projekt-Emails, fasst sie zusammen und erstellt Tasks — automatisch.</p>
+  <div class="big-number">-70%</div>
+  <div class="big-label">weniger Zeit in der Inbox</div>
+</div>
+
+<h2>Das Problem kennt jeder</h2>
+
+<div class="compare">
+  <div class="compare-card before">
+    <h3>☕ Heute — Montagmorgen</h3>
+    <ul>
+      <li>Outlook öffnen: 34 neue Emails</li>
+      <li>20 Minuten nur Sortieren & Lesen</li>
+      <li>3 Emails brauchen eine Antwort — vergessen</li>
+      <li>Statiker hat was geschickt — in welchem Projekt?</li>
+      <li>Task im Kopf notiert — nie erledigt</li>
+      <li>Bauherr schreibt zum 3. Mal nach</li>
+    </ul>
+  </div>
+  <div class="compare-card after">
+    <h3>✨ Mit Email-Assistent</h3>
+    <ul>
+      <li>App öffnen: 3 wichtige Emails, vorverdaut</li>
+      <li>2 Minuten: alles gesehen, alles verstanden</li>
+      <li>Tasks aus Emails mit einem Klick erstellt</li>
+      <li>Jede Email automatisch dem richtigen Projekt zugeordnet</li>
+      <li>Erinnerung wenn Antworten überfällig sind</li>
+      <li>Wochenrückblick: was kam rein, was wurde erledigt</li>
+    </ul>
+  </div>
+</div>
+
+<h2>So einfach geht's — einmal verbinden, fertig</h2>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num"></div>
+    <div class="step-content">
+      <h3>Email verbinden</h3>
+      <p>Klick auf "Email verbinden" → mit deinem Microsoft-Konto anmelden → fertig. Wie wenn du dich bei Teams einloggst. Dauert 30 Sekunden.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num"></div>
+    <div class="step-content">
+      <h3>Projekte zuordnen</h3>
+      <p>Der Assistent schlägt vor, welche Absender zu welchem Projekt gehören. Du bestätigst oder korrigierst — er lernt sofort dazu.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num"></div>
+    <div class="step-content">
+      <h3>Lehnt euch zurück</h3>
+      <p>Ab jetzt fasst der Assistent jede Projekt-Email zusammen, schlägt Tasks vor und erinnert euch an offene Antworten. Ihr entscheidet — er erledigt die Vorarbeit.</p>
+    </div>
+  </div>
+</div>
+
+<h2>So sieht das aus — ein typischer Morgen</h2>
+
+<div class="mockup">
+  <div class="mockup-bar">
+    <span class="mockup-dot r"></span>
+    <span class="mockup-dot y"></span>
+    <span class="mockup-dot g"></span>
+  </div>
+  <div class="mockup-body">
+    <div class="inbox-header">
+      <h4>📬 Projekt-Inbox</h4>
+      <span class="badge">3 neu</span>
+    </div>
+    <p class="inbox-subtitle">34 Emails empfangen · 3 projektrelevant · Rest gefiltert (Newsletter, CC, intern)</p>
+
+    <div class="email-card urgent">
+      <div class="from">Ing.-Büro Müller</div>
+      <div class="subject">Bewehrungsplan EG — finale Version</div>
+      <div class="summary">📎 Neue Version des Bewehrungsplans (v3). Stützweiten im Flur korrigiert. Muss geprüft und freigegeben werden.</div>
+      <div class="btns">
+        <button class="btn task">→ Task erstellen</button>
+        <button class="btn open">In Outlook öffnen</button>
+      </div>
+    </div>
+
+    <div class="email-card action">
+      <div class="from">Familie Schmidt (Bauherr)</div>
+      <div class="subject">Re: Küchengrundriss — Wand stehen lassen?</div>
+      <div class="summary">🔄 Änderungswunsch: Wand zwischen Küche und Flur doch behalten. Widerspricht aktuellem Entwurf. Braucht Rückmeldung bis Freitag.</div>
+      <div class="btns">
+        <button class="btn task">→ Task erstellen</button>
+        <button class="btn reply">Antwort vorschlagen</button>
+        <button class="btn open">In Outlook öffnen</button>
+      </div>
+    </div>
+
+    <div class="email-card good">
+      <div class="from">Bauamt Frankfurt</div>
+      <div class="subject">Baugenehmigung Az. 2024/1847 — Bescheid</div>
+      <div class="summary">🎉 Baugenehmigung erteilt! 3 Auflagen im Anhang. Meilenstein kann als erledigt markiert werden.</div>
+      <div class="btns">
+        <button class="btn done">✓ Meilenstein erledigt</button>
+        <button class="btn task">→ Auflagen prüfen</button>
+        <button class="btn open">In Outlook öffnen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Aus Email wird Task — ein Klick</h2>
+
+<p>Wenn du auf "Task erstellen" klickst, ist alles schon vorausgefüllt:</p>
+
+<div class="task-preview">
+  <div class="label">📁 Lindenstraße 18 — Ausführungsplanung</div>
+  <div class="title">Bewehrungsplan EG v3 prüfen & freigeben</div>
+  <div class="details">
+    <span>👤 Paul</span>
+    <span>📅 bis Donnerstag</span>
+    <span>🔶 Mittel</span>
+    <span>📎 PDF verlinkt</span>
+  </div>
+  <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #888;">Kontext aus der Email: <em>"Finale Version nach Korrektur der Stützweiten im Flur."</em></p>
+</div>
+
+<p>Kein Abtippen. Kein Suchen. Kein "welches Projekt war das nochmal?". Der Assistent kennt eure Projekte und schlägt alles vor. Ihr bestätigt — oder passt an.</p>
+
+<h2>Was der Assistent noch kann</h2>
+
+<div class="outcomes">
+  <div class="outcome">
+    <div class="icon">⏰</div>
+    <div class="number">Auto</div>
+    <div class="label">Erinnerungen wenn Antworten überfällig sind</div>
+  </div>
+  <div class="outcome">
+    <div class="icon">📊</div>
+    <div class="number">Freitags</div>
+    <div class="label">Wochenrückblick: was kam rein, was ist offen</div>
+  </div>
+  <div class="outcome">
+    <div class="icon">🔗</div>
+    <div class="number">Immer</div>
+    <div class="label">Emails automatisch dem richtigen Projekt zugeordnet</div>
+  </div>
+</div>
+
+<h2>Und eure Daten?</h2>
+
+<div class="privacy">
+  <h3>🛡️ Datenschutz ist eingebaut — nicht aufgeklebt</h3>
+  <ul>
+    <li>Der Assistent liest nur Projekt-Emails (bekannte Absender). Private Emails sind unsichtbar.</li>
+    <li>Email-Inhalte werden nicht gespeichert. Nur die Zusammenfassung bleibt — der Rest bleibt bei Microsoft.</li>
+    <li>Ihr seht jederzeit was der Assistent gelesen hat (Transparenz-Log).</li>
+    <li>Ein Klick auf "Trennen" — und die Verbindung ist weg. Komplett.</li>
+    <li>Eure Emails verlassen nie Microsofts Server. Der Assistent schaut nur rein.</li>
+  </ul>
+</div>
+
+<div class="cta">
+  <h2>Weniger Inbox. Mehr Architektur.</h2>
+  <p>Wir würden das gerne mit euch zusammen ausprobieren — und euer Feedback direkt einbauen.</p>
+</div>
+
+<p class="footer">Architekt Connect · 2026</p>
+
+</body>
+</html>
