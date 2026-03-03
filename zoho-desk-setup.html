@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoho Desk API — Setup Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; background: #f7f7f7; color: #222; line-height: 1.7; padding: 2rem; }
+  .container { max-width: 720px; margin: 0 auto; }
+  .back { font-size: 0.85rem; color: #717171; text-decoration: none; margin-bottom: 1.5rem; display: inline-block; }
+  .back:hover { color: #222; }
+  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .date { color: #717171; font-size: 0.9rem; margin-bottom: 2rem; }
+  .card { background: #fff; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); }
+  h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem; color: #222; }
+  h3 { font-size: 0.95rem; font-weight: 600; margin: 1rem 0 0.4rem; color: #444; }
+  p { font-size: 0.92rem; margin-bottom: 0.6rem; color: #444; }
+  ol, ul { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+  li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+  code { background: #f5f5f5; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; }
+  pre { background: #1e1e1e; color: #d4d4d4; padding: 1rem 1.2rem; border-radius: 10px; overflow-x: auto; margin: 0.8rem 0; font-size: 0.82rem; line-height: 1.5; }
+  pre .comment { color: #6a9955; }
+  .step-num { display: inline-block; background: #222; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 0.8rem; font-weight: 700; margin-right: 0.5rem; }
+  .warn { background: #fff3e0; border-left: 3px solid #f57c00; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; margin: 0.8rem 0; font-size: 0.88rem; }
+  .info { background: #e3f2fd; border-left: 3px solid #1565c0; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; margin: 0.8rem 0; font-size: 0.88rem; }
+  .success { background: #e8f5e9; border-left: 3px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; margin: 0.8rem 0; font-size: 0.88rem; }
+  table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.88rem; }
+  th { text-align: left; padding: 0.6rem 0.8rem; background: #f9f9f9; border-bottom: 2px solid #eee; font-weight: 600; color: #444; }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0f0f0; }
+  .status { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 6px; }
+  .status.todo { background: #fff3e0; color: #e65100; }
+  .status.done { background: #e8f5e9; color: #2e7d32; }
+  a { color: #1565c0; }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← Dashboard</a>
+<h1>🔧 Zoho Desk API — OAuth Setup</h1>
+<div class="date">3. März 2026 · Support Dashboard Projekt · <span class="status todo">IN PROGRESS</span></div>
+
+<div class="info">
+<strong>Ziel:</strong> Read-only Zugang zur Zoho Desk API für ein Support-Dashboard. Tickets, Agent Performance, Trends, SLA-Metriken — alles was deine Leader brauchen.
+</div>
+
+<!-- Step 1 -->
+<div class="card">
+<h2><span class="step-num">1</span> API Console öffnen</h2>
+<p>Öffne <a href="https://api-console.zoho.eu" target="_blank">https://api-console.zoho.eu</a></p>
+<div class="info">EU-Domain weil ihr eine europäische Zoho-Instanz habt. Check: Steht in deinem Zoho-Login <code>accounts.zoho.eu</code>? Dann <code>.eu</code>.</div>
+</div>
+
+<!-- Step 2 -->
+<div class="card">
+<h2><span class="step-num">2</span> Self Client anlegen</h2>
+<ol>
+<li>Klick <strong>"Add Client"</strong></li>
+<li>Wähle <strong>"Self Client"</strong> (schnellster Weg für interne Tools)</li>
+<li>Bestätige</li>
+</ol>
+<p>Du bekommst:</p>
+<ul>
+<li><strong>Client ID</strong> — kopieren!</li>
+<li><strong>Client Secret</strong> — kopieren!</li>
+</ul>
+<div class="warn">📝 Beide sofort sicher speichern! Brauchst du in Schritt 5.</div>
+</div>
+
+<!-- Step 3 -->
+<div class="card">
+<h2><span class="step-num">3</span> Scopes definieren</h2>
+<p>Diese Scopes brauchst du für das Support-Dashboard:</p>
+<pre>Desk.tickets.READ,Desk.contacts.READ,Desk.tasks.READ,Desk.agents.READ,Desk.departments.READ,Desk.reports.READ,Desk.settings.READ</pre>
+
+<table>
+<tr><th>Scope</th><th>Gibt dir</th></tr>
+<tr><td><code>Desk.tickets.READ</code></td><td>Alle Tickets, Status, SLA, Tags</td></tr>
+<tr><td><code>Desk.agents.READ</code></td><td>Agent-Profile, Zuordnungen</td></tr>
+<tr><td><code>Desk.reports.READ</code></td><td>Built-in Reports, Metriken</td></tr>
+<tr><td><code>Desk.departments.READ</code></td><td>Abteilungen / Teams</td></tr>
+<tr><td><code>Desk.contacts.READ</code></td><td>Kundenkontakte</td></tr>
+<tr><td><code>Desk.settings.READ</code></td><td>SLA-Policies, Business Hours</td></tr>
+<tr><td><code>Desk.tasks.READ</code></td><td>Aufgaben / Follow-ups</td></tr>
+</table>
+</div>
+
+<!-- Step 4 -->
+<div class="card">
+<h2><span class="step-num">4</span> Grant Token generieren</h2>
+<p>Im Self Client Panel:</p>
+<ol>
+<li><strong>Scope</strong> einfügen (den String von oben, alles in eine Zeile)</li>
+<li><strong>Time Duration:</strong> 10 Minuten</li>
+<li><strong>Scope Description:</strong> <code>DRMS Support Dashboard — read-only</code></li>
+<li>Klick <strong>"Create"</strong></li>
+</ol>
+<div class="warn">⚠️ Der Grant Token ist nur <strong>10 Minuten gültig!</strong> Sofort weiter zu Schritt 5.</div>
+</div>
+
+<!-- Step 5 -->
+<div class="card">
+<h2><span class="step-num">5</span> Grant Token → Refresh Token tauschen</h2>
+<p>Sofort nach dem Grant Token — im Terminal oder Postman:</p>
+<pre>curl -X POST "https://accounts.zoho.eu/oauth/v2/token" \
+  -d "grant_type=authorization_code" \
+  -d "client_id=<span style="color:#ce9178;">DEINE_CLIENT_ID</span>" \
+  -d "client_secret=<span style="color:#ce9178;">DEIN_CLIENT_SECRET</span>" \
+  -d "code=<span style="color:#ce9178;">DEIN_GRANT_TOKEN</span>"</pre>
+
+<p><strong>Response:</strong></p>
+<pre>{
+  "access_token": "1000.xxxx...",
+  "refresh_token": "1000.yyyy...",
+  "expires_in": 3600,
+  "token_type": "Bearer"
+}</pre>
+
+<div class="success">📝 Den <strong>refresh_token</strong> sicher speichern! Der läuft nicht ab (solange du den Client nicht löschst).</div>
+</div>
+
+<!-- Step 6 -->
+<div class="card">
+<h2><span class="step-num">6</span> Testen</h2>
+<p>Quick-Test ob alles funktioniert:</p>
+<pre>curl -X GET "https://desk.zoho.eu/api/v1/tickets?limit=5" \
+  -H "Authorization: Zoho-oauthtoken <span style="color:#ce9178;">DEIN_ACCESS_TOKEN</span>" \
+  -H "orgId: <span style="color:#ce9178;">DEINE_ORG_ID</span>"</pre>
+
+<div class="info"><strong>orgId</strong> findest du unter: Zoho Desk → Setup → API → Org ID.<br>Oder via API: <code>GET https://desk.zoho.eu/api/v1/organizations</code></div>
+</div>
+
+<!-- Summary -->
+<div class="card">
+<h2>✅ Was du am Ende hast</h2>
+<table>
+<tr><th>Was</th><th>Wo speichern</th></tr>
+<tr><td>Client ID</td><td>Supabase Secrets</td></tr>
+<tr><td>Client Secret</td><td>Supabase Secrets</td></tr>
+<tr><td>Refresh Token</td><td>Supabase Secrets</td></tr>
+<tr><td>Org ID</td><td>Supabase Secrets oder .env</td></tr>
+</table>
+</div>
+
+<div class="card" style="border-left: 3px solid #1565c0;">
+<h2>🎯 Nächste Schritte (nach Token-Setup)</h2>
+<ol>
+<li>Edge Function für Token-Refresh bauen (Refresh Token → Access Token)</li>
+<li>Desk API Endpoints anbinden (Tickets, Agents, Departments)</li>
+<li>Dashboard-Views: Ticket-Volumen, SLA-Compliance, Agent Performance, Trends</li>
+<li>Leader-spezifische Ansichten (Team-Filter)</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>
