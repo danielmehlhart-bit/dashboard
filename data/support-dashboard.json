@@ -1,0 +1,1963 @@
+{
+  "collected_at": "2026-03-03T16:35:45.943364+00:00",
+  "year": 2026,
+  "monthly_tickets": {
+    "2025-01": 3073,
+    "2025-02": 2995,
+    "2025-03": 3223,
+    "2025-04": 3209,
+    "2025-05": 2979,
+    "2025-06": 3346,
+    "2025-07": 3726,
+    "2025-08": 2500,
+    "2025-09": 3576,
+    "2025-10": 3602,
+    "2025-11": 3672,
+    "2025-12": 3658,
+    "2026-01": 3110,
+    "2026-02": 3118,
+    "2026-03": 247
+  },
+  "monthly_frt_rt": {
+    "2020-06": {
+      "frt_min": 0,
+      "rt_min": 1271008
+    },
+    "2020-07": {
+      "frt_min": 0,
+      "rt_min": 1814
+    },
+    "2020-08": {
+      "frt_min": 4,
+      "rt_min": 117
+    },
+    "2020-09": {
+      "frt_min": 28,
+      "rt_min": 7742
+    },
+    "2020-10": {
+      "frt_min": 94,
+      "rt_min": 910
+    },
+    "2020-11": {
+      "frt_min": 56,
+      "rt_min": 852
+    },
+    "2020-12": {
+      "frt_min": 51,
+      "rt_min": 1238
+    },
+    "2021-01": {
+      "frt_min": 105,
+      "rt_min": 1719
+    },
+    "2021-02": {
+      "frt_min": 81,
+      "rt_min": 1763
+    },
+    "2021-03": {
+      "frt_min": 50,
+      "rt_min": 1325
+    },
+    "2021-04": {
+      "frt_min": 54,
+      "rt_min": 2222
+    },
+    "2021-05": {
+      "frt_min": 40,
+      "rt_min": 1429
+    },
+    "2021-06": {
+      "frt_min": 64,
+      "rt_min": 3138
+    },
+    "2021-07": {
+      "frt_min": 61,
+      "rt_min": 3964
+    },
+    "2021-08": {
+      "frt_min": 60,
+      "rt_min": 1940
+    },
+    "2021-09": {
+      "frt_min": 49,
+      "rt_min": 1735
+    },
+    "2021-10": {
+      "frt_min": 22,
+      "rt_min": 1158
+    },
+    "2021-11": {
+      "frt_min": 28,
+      "rt_min": 2088
+    },
+    "2021-12": {
+      "frt_min": 35,
+      "rt_min": 4805
+    },
+    "2022-01": {
+      "frt_min": 46,
+      "rt_min": 2526
+    },
+    "2022-02": {
+      "frt_min": 55,
+      "rt_min": 2811
+    },
+    "2022-03": {
+      "frt_min": 33,
+      "rt_min": 1801
+    },
+    "2022-04": {
+      "frt_min": 133,
+      "rt_min": 5705
+    },
+    "2022-05": {
+      "frt_min": 94,
+      "rt_min": 2368
+    },
+    "2022-06": {
+      "frt_min": 106,
+      "rt_min": 1841
+    },
+    "2022-07": {
+      "frt_min": 67,
+      "rt_min": 1802
+    },
+    "2022-08": {
+      "frt_min": 92,
+      "rt_min": 4894
+    },
+    "2022-09": {
+      "frt_min": 36,
+      "rt_min": 1053
+    },
+    "2022-10": {
+      "frt_min": 68,
+      "rt_min": 2066
+    },
+    "2022-11": {
+      "frt_min": 101,
+      "rt_min": 2894
+    },
+    "2022-12": {
+      "frt_min": 99,
+      "rt_min": 2427
+    },
+    "2023-01": {
+      "frt_min": 234,
+      "rt_min": 5895
+    },
+    "2023-02": {
+      "frt_min": 101,
+      "rt_min": 2613
+    },
+    "2023-03": {
+      "frt_min": 73,
+      "rt_min": 7818
+    },
+    "2023-04": {
+      "frt_min": 91,
+      "rt_min": 1977
+    },
+    "2023-05": {
+      "frt_min": 61,
+      "rt_min": 2249
+    },
+    "2023-06": {
+      "frt_min": 92,
+      "rt_min": 3602
+    },
+    "2023-07": {
+      "frt_min": 101,
+      "rt_min": 2796
+    },
+    "2023-08": {
+      "frt_min": 51,
+      "rt_min": 5965
+    },
+    "2023-09": {
+      "frt_min": 45,
+      "rt_min": 1426
+    },
+    "2023-10": {
+      "frt_min": 72,
+      "rt_min": 2503
+    },
+    "2023-11": {
+      "frt_min": 85,
+      "rt_min": 3624
+    },
+    "2023-12": {
+      "frt_min": 329,
+      "rt_min": 5578
+    },
+    "2024-01": {
+      "frt_min": 72,
+      "rt_min": 2694
+    },
+    "2024-02": {
+      "frt_min": 74,
+      "rt_min": 3736
+    },
+    "2024-03": {
+      "frt_min": 56,
+      "rt_min": 1971
+    },
+    "2024-04": {
+      "frt_min": 65,
+      "rt_min": 4832
+    },
+    "2024-05": {
+      "frt_min": 135,
+      "rt_min": 6895
+    },
+    "2024-06": {
+      "frt_min": 126,
+      "rt_min": 4373
+    },
+    "2024-07": {
+      "frt_min": 83,
+      "rt_min": 5020
+    },
+    "2024-08": {
+      "frt_min": 77,
+      "rt_min": 26751
+    },
+    "2024-09": {
+      "frt_min": 105,
+      "rt_min": 2433
+    },
+    "2024-10": {
+      "frt_min": 115,
+      "rt_min": 2713
+    },
+    "2024-11": {
+      "frt_min": 131,
+      "rt_min": 6386
+    },
+    "2024-12": {
+      "frt_min": 208,
+      "rt_min": 10414
+    },
+    "2025-01": {
+      "frt_min": 191,
+      "rt_min": 8186
+    },
+    "2025-02": {
+      "frt_min": 149,
+      "rt_min": 6191
+    },
+    "2025-03": {
+      "frt_min": 99,
+      "rt_min": 4163
+    },
+    "2025-04": {
+      "frt_min": 120,
+      "rt_min": 3046
+    },
+    "2025-05": {
+      "frt_min": 149,
+      "rt_min": 11775
+    },
+    "2025-06": {
+      "frt_min": 112,
+      "rt_min": 2417
+    },
+    "2025-07": {
+      "frt_min": 91,
+      "rt_min": 2348
+    },
+    "2025-08": {
+      "frt_min": 126,
+      "rt_min": 3154
+    },
+    "2025-09": {
+      "frt_min": 149,
+      "rt_min": 1930
+    },
+    "2025-10": {
+      "frt_min": 114,
+      "rt_min": 6675
+    },
+    "2025-11": {
+      "frt_min": 156,
+      "rt_min": 2743
+    },
+    "2025-12": {
+      "frt_min": 61,
+      "rt_min": 1595
+    },
+    "2026-01": {
+      "frt_min": 95,
+      "rt_min": 4330
+    },
+    "2026-02": {
+      "frt_min": 155,
+      "rt_min": 2809
+    },
+    "2026-03": {
+      "frt_min": 110,
+      "rt_min": 3767
+    }
+  },
+  "agent_analytics": {
+    "Alexandra Kirnerov\u00e1": {
+      "sys_rt_min": 241,
+      "agent_rt_min": 13
+    },
+    "Alexandra Schumann": {
+      "sys_rt_min": 473,
+      "agent_rt_min": 28
+    },
+    "Alina Mocanu": {
+      "sys_rt_min": 556,
+      "agent_rt_min": 10
+    },
+    "Andrii Velychko": {
+      "sys_rt_min": 1067,
+      "agent_rt_min": 1063
+    },
+    "Antonella Miro": {
+      "sys_rt_min": 194,
+      "agent_rt_min": 3
+    },
+    "Atanas Atanasov": {
+      "sys_rt_min": 1378,
+      "agent_rt_min": 726
+    },
+    "Aude de M\u00e9gille": {
+      "sys_rt_min": 354,
+      "agent_rt_min": 2
+    },
+    "Bertrand Montoya": {
+      "sys_rt_min": 296,
+      "agent_rt_min": 24
+    },
+    "Bj\u00f6rn Weber": {
+      "sys_rt_min": 132,
+      "agent_rt_min": 16
+    },
+    "Borromee Charles": {
+      "sys_rt_min": 221,
+      "agent_rt_min": 11
+    },
+    "Camilla Rupp": {
+      "sys_rt_min": 309,
+      "agent_rt_min": 17
+    },
+    "Cassandra Moir": {
+      "sys_rt_min": 148,
+      "agent_rt_min": 3
+    },
+    "Cathleen Zirk": {
+      "sys_rt_min": 4414,
+      "agent_rt_min": 3989
+    },
+    "Claudia Rossack": {
+      "sys_rt_min": 2095,
+      "agent_rt_min": 1762
+    },
+    "Consuelo Gomez": {
+      "sys_rt_min": 1539,
+      "agent_rt_min": 7
+    },
+    "Dania Dorlys": {
+      "sys_rt_min": 235,
+      "agent_rt_min": 8
+    },
+    "Dorota Barcik": {
+      "sys_rt_min": 206,
+      "agent_rt_min": 11
+    },
+    "Drooms Support Team": {
+      "sys_rt_min": 63,
+      "agent_rt_min": 1
+    },
+    "Elena Gentilini": {
+      "sys_rt_min": 5720,
+      "agent_rt_min": 4552
+    },
+    "Elisabet Rossich": {
+      "sys_rt_min": 85,
+      "agent_rt_min": 5
+    },
+    "Estrella Abenaa Martin": {
+      "sys_rt_min": 407,
+      "agent_rt_min": 9
+    },
+    "Eva Linder": {
+      "sys_rt_min": 163,
+      "agent_rt_min": 22
+    },
+    "Fatma Okyay": {
+      "sys_rt_min": 5246,
+      "agent_rt_min": 1974
+    },
+    "Gergana Ganeva": {
+      "sys_rt_min": 877,
+      "agent_rt_min": 421
+    },
+    "Gregory Bacher": {
+      "sys_rt_min": 376,
+      "agent_rt_min": 19
+    },
+    "Hoang Long Pham": {
+      "sys_rt_min": 413,
+      "agent_rt_min": 4
+    },
+    "Ignacio Rojas Mart\u00ednez": {
+      "sys_rt_min": 106,
+      "agent_rt_min": 4
+    },
+    "Irene Maria Mendez Becerra": {
+      "sys_rt_min": 321,
+      "agent_rt_min": 8
+    },
+    "Isabell Baldamus": {
+      "sys_rt_min": 547,
+      "agent_rt_min": 105
+    },
+    "Jan Filip": {
+      "sys_rt_min": 73,
+      "agent_rt_min": 0
+    },
+    "Jennifar Hossain": {
+      "sys_rt_min": 75,
+      "agent_rt_min": 30
+    },
+    "Jennifer Lee Wells": {
+      "sys_rt_min": 303,
+      "agent_rt_min": 3
+    },
+    "Joanna Yuen": {
+      "sys_rt_min": 236,
+      "agent_rt_min": 11
+    },
+    "Joel S. Loens": {
+      "sys_rt_min": 166,
+      "agent_rt_min": 39
+    },
+    "Karl Feicht": {
+      "sys_rt_min": 262,
+      "agent_rt_min": 21
+    },
+    "Katrin Gr\u00fcnwald": {
+      "sys_rt_min": 65328,
+      "agent_rt_min": 64893
+    },
+    "Kristina Kochovska": {
+      "sys_rt_min": 4611,
+      "agent_rt_min": 1901
+    },
+    "Kristiyana Bogdanova": {
+      "sys_rt_min": 1179,
+      "agent_rt_min": 55
+    },
+    "Laura Breitenbach": {
+      "sys_rt_min": 177,
+      "agent_rt_min": 4
+    },
+    "Laura Johne": {
+      "sys_rt_min": 194,
+      "agent_rt_min": 9
+    },
+    "Lucie Jacomin": {
+      "sys_rt_min": 65,
+      "agent_rt_min": 10
+    },
+    "Mabel Pareja Tallada": {
+      "sys_rt_min": 56,
+      "agent_rt_min": 3
+    },
+    "Malik Moussi": {
+      "sys_rt_min": 64,
+      "agent_rt_min": 9
+    },
+    "Maria Juarez": {
+      "sys_rt_min": 2528,
+      "agent_rt_min": 1165
+    },
+    "Maria Radoykova": {
+      "sys_rt_min": 316,
+      "agent_rt_min": 4
+    },
+    "Marie-Christin Micklitza": {
+      "sys_rt_min": 282,
+      "agent_rt_min": 8
+    },
+    "Michelle Pokoj": {
+      "sys_rt_min": 198,
+      "agent_rt_min": 19
+    },
+    "Miranda Stowers": {
+      "sys_rt_min": 194,
+      "agent_rt_min": 11
+    },
+    "Mustafa G\u00f6kden": {
+      "sys_rt_min": 471,
+      "agent_rt_min": 27
+    },
+    "Nhat Ha Nguyen": {
+      "sys_rt_min": 1531,
+      "agent_rt_min": 1
+    },
+    "Nicole Flaake": {
+      "sys_rt_min": 5871,
+      "agent_rt_min": 3704
+    },
+    "Nicole Hoss": {
+      "sys_rt_min": 201,
+      "agent_rt_min": 17
+    },
+    "Nicole Matusik": {
+      "sys_rt_min": 319,
+      "agent_rt_min": 68
+    },
+    "Nikita Chernukhin": {
+      "sys_rt_min": 572,
+      "agent_rt_min": 0
+    },
+    "No\u00e9mi Mukama": {
+      "sys_rt_min": 208,
+      "agent_rt_min": 13
+    },
+    "Nuria Pena Melero": {
+      "sys_rt_min": 62,
+      "agent_rt_min": 2
+    },
+    "Olga Lopez Eiriz": {
+      "sys_rt_min": 91,
+      "agent_rt_min": 3
+    },
+    "Pawanpreet Singh": {
+      "sys_rt_min": 1433,
+      "agent_rt_min": 10
+    },
+    "Peter Hoffmann": {
+      "sys_rt_min": 289,
+      "agent_rt_min": 26
+    },
+    "Phillip Ottenroth": {
+      "sys_rt_min": 346,
+      "agent_rt_min": 8
+    },
+    "Piyus Shah": {
+      "sys_rt_min": 399,
+      "agent_rt_min": 33
+    },
+    "Priscillia Ernewein": {
+      "sys_rt_min": 225,
+      "agent_rt_min": 13
+    },
+    "Raya Mosholova": {
+      "sys_rt_min": 5052,
+      "agent_rt_min": 776
+    },
+    "Roberto Porcheddu": {
+      "sys_rt_min": 233,
+      "agent_rt_min": 9
+    },
+    "Ruba Al Bizri": {
+      "sys_rt_min": 53949,
+      "agent_rt_min": 3208
+    },
+    "Sabine Nicoletti": {
+      "sys_rt_min": 180,
+      "agent_rt_min": 25
+    },
+    "Sanjar Kurbanov": {
+      "sys_rt_min": 1508,
+      "agent_rt_min": 0
+    },
+    "Sascha Vorenberg": {
+      "sys_rt_min": 237,
+      "agent_rt_min": 7
+    },
+    "Saskia Borngrebe": {
+      "sys_rt_min": 157,
+      "agent_rt_min": 15
+    },
+    "Sean Enright": {
+      "sys_rt_min": 265,
+      "agent_rt_min": 12
+    },
+    "Stefanie Glomp": {
+      "sys_rt_min": 0,
+      "agent_rt_min": 0
+    },
+    "Stefanie Pietzonka": {
+      "sys_rt_min": 670,
+      "agent_rt_min": 299
+    },
+    "Steffen Fiedler": {
+      "sys_rt_min": 5451,
+      "agent_rt_min": 1669
+    },
+    "Susana Borico-Lobede": {
+      "sys_rt_min": 210,
+      "agent_rt_min": 15
+    },
+    "Vincent Monkam": {
+      "sys_rt_min": 75,
+      "agent_rt_min": 22
+    },
+    "Virginia Grazio": {
+      "sys_rt_min": 82,
+      "agent_rt_min": 2
+    },
+    "Wissal Dahir": {
+      "sys_rt_min": 584,
+      "agent_rt_min": 6
+    },
+    "Grand Summary:": {
+      "sys_rt_min": 338,
+      "agent_rt_min": 46
+    }
+  },
+  "agent_calls": {
+    "Estrella Abenaa Martin": {
+      "inbound_answered": 31,
+      "inbound_missed": 1,
+      "outbound_answered": 15,
+      "outbound_missed": 0,
+      "total": 47
+    },
+    "Peter Hoffmann": {
+      "inbound_answered": 62,
+      "inbound_missed": 1,
+      "outbound_answered": 80,
+      "outbound_missed": 0,
+      "total": 143
+    },
+    "Irene Maria Mendez Becerra": {
+      "inbound_answered": 42,
+      "inbound_missed": 0,
+      "outbound_answered": 39,
+      "outbound_missed": 3,
+      "total": 84
+    },
+    "Nuria Pena Melero": {
+      "inbound_answered": 46,
+      "inbound_missed": 6,
+      "outbound_answered": 22,
+      "outbound_missed": 2,
+      "total": 76
+    },
+    "Olga Lopez Eiriz": {
+      "inbound_answered": 56,
+      "inbound_missed": 0,
+      "outbound_answered": 95,
+      "outbound_missed": 3,
+      "total": 154
+    },
+    "Cassandra Moir": {
+      "inbound_answered": 49,
+      "inbound_missed": 4,
+      "outbound_answered": 23,
+      "outbound_missed": 0,
+      "total": 76
+    },
+    "Roberto Porcheddu": {
+      "inbound_answered": 68,
+      "inbound_missed": 3,
+      "outbound_answered": 38,
+      "outbound_missed": 1,
+      "total": 110
+    },
+    "Jennifer Lee Wells": {
+      "inbound_answered": 69,
+      "inbound_missed": 8,
+      "outbound_answered": 68,
+      "outbound_missed": 8,
+      "total": 153
+    },
+    "Alina Mocanu": {
+      "inbound_answered": 16,
+      "inbound_missed": 3,
+      "outbound_answered": 29,
+      "outbound_missed": 3,
+      "total": 51
+    },
+    "Sean Enright": {
+      "inbound_answered": 107,
+      "inbound_missed": 3,
+      "outbound_answered": 40,
+      "outbound_missed": 2,
+      "total": 152
+    },
+    "Elisabet Rossich": {
+      "inbound_answered": 4,
+      "inbound_missed": 2,
+      "outbound_answered": 5,
+      "outbound_missed": 0,
+      "total": 11
+    },
+    "Sascha Vorenberg": {
+      "inbound_answered": 72,
+      "inbound_missed": 10,
+      "outbound_answered": 72,
+      "outbound_missed": 4,
+      "total": 158
+    },
+    "Wissal Dahir": {
+      "inbound_answered": 67,
+      "inbound_missed": 0,
+      "outbound_answered": 52,
+      "outbound_missed": 1,
+      "total": 120
+    },
+    "Marie-Christin Micklitza": {
+      "inbound_answered": 54,
+      "inbound_missed": 1,
+      "outbound_answered": 6,
+      "outbound_missed": 0,
+      "total": 61
+    },
+    "Maria Radoykova": {
+      "inbound_answered": 6,
+      "inbound_missed": 0,
+      "outbound_answered": 5,
+      "outbound_missed": 0,
+      "total": 11
+    },
+    "Antonella Miro": {
+      "inbound_answered": 82,
+      "inbound_missed": 5,
+      "outbound_answered": 45,
+      "outbound_missed": 3,
+      "total": 135
+    },
+    "Laura Breitenbach": {
+      "inbound_answered": 97,
+      "inbound_missed": 5,
+      "outbound_answered": 32,
+      "outbound_missed": 0,
+      "total": 134
+    },
+    "Sandrine Talbot": {
+      "inbound_answered": 3,
+      "inbound_missed": 0,
+      "outbound_answered": 0,
+      "outbound_missed": 0,
+      "total": 3
+    },
+    "Nhat Ha Nguyen": {
+      "inbound_answered": 1,
+      "inbound_missed": 0,
+      "outbound_answered": 6,
+      "outbound_missed": 0,
+      "total": 7
+    },
+    "Hoang Long Pham": {
+      "inbound_answered": 3,
+      "inbound_missed": 0,
+      "outbound_answered": 7,
+      "outbound_missed": 0,
+      "total": 10
+    }
+  },
+  "agent_tickets": {
+    "Peter Hoffmann": {
+      "tickets": 645,
+      "emails": 572,
+      "calls": 73,
+      "region": "DACH"
+    },
+    "Marie-Christin Micklitza": {
+      "tickets": 411,
+      "emails": 359,
+      "calls": 52,
+      "region": "DACH"
+    },
+    "Sascha Vorenberg": {
+      "tickets": 186,
+      "emails": 145,
+      "calls": 41,
+      "region": "Other"
+    },
+    "Sean Enright": {
+      "tickets": 305,
+      "emails": 166,
+      "calls": 139,
+      "region": "DACH"
+    },
+    "Laura Breitenbach": {
+      "tickets": 596,
+      "emails": 507,
+      "calls": 89,
+      "region": "DACH"
+    },
+    "Jennifer Lee Wells": {
+      "tickets": 498,
+      "emails": 425,
+      "calls": 73,
+      "region": "DACH"
+    },
+    "Hoang Long Pham": {
+      "tickets": 88,
+      "emails": 88,
+      "calls": 0,
+      "region": "DACH"
+    },
+    "Roberto Porcheddu": {
+      "tickets": 582,
+      "emails": 470,
+      "calls": 112,
+      "region": "DACH"
+    },
+    "Nuria Pena Melero": {
+      "tickets": 66,
+      "emails": 44,
+      "calls": 22,
+      "region": "Spain"
+    },
+    "Cassandra Moir": {
+      "tickets": 67,
+      "emails": 39,
+      "calls": 28,
+      "region": "Other"
+    },
+    "Irene Maria Mendez Becerra": {
+      "tickets": 319,
+      "emails": 294,
+      "calls": 25,
+      "region": "Spain"
+    },
+    "Nhat Ha Nguyen": {
+      "tickets": 84,
+      "emails": 81,
+      "calls": 3,
+      "region": "DACH"
+    },
+    "Wissal Dahir": {
+      "tickets": 567,
+      "emails": 512,
+      "calls": 55,
+      "region": "France"
+    },
+    "Antonella Miro": {
+      "tickets": 374,
+      "emails": 298,
+      "calls": 76,
+      "region": "Spain"
+    },
+    "Olga Lopez Eiriz": {
+      "tickets": 377,
+      "emails": 312,
+      "calls": 65,
+      "region": "Spain"
+    },
+    "Estrella Abenaa Martin": {
+      "tickets": 143,
+      "emails": 132,
+      "calls": 11,
+      "region": "UK"
+    },
+    "Alina Mocanu": {
+      "tickets": 90,
+      "emails": 83,
+      "calls": 7,
+      "region": "UK"
+    },
+    "Maria Radoykova": {
+      "tickets": 84,
+      "emails": 78,
+      "calls": 6,
+      "region": "France"
+    },
+    "Elisabet Rossich": {
+      "tickets": 1,
+      "emails": 1,
+      "calls": 0,
+      "region": "Spain"
+    },
+    "Joanna Yuen": {
+      "tickets": 3,
+      "emails": 3,
+      "calls": 0,
+      "region": "UK"
+    },
+    "Karl Feicht": {
+      "tickets": 3,
+      "emails": 3,
+      "calls": 0,
+      "region": "DACH"
+    }
+  },
+  "activities": {
+    "total_sampled": 4900,
+    "tagged": 3303,
+    "tag_rate": 67,
+    "top": [
+      {
+        "name": "Data Carrier Order",
+        "count": 342
+      },
+      {
+        "name": "Contract Termination",
+        "count": 318
+      },
+      {
+        "name": "Miscellaneous",
+        "count": 288
+      },
+      {
+        "name": "Prep Phase (End/Extension)",
+        "count": 236
+      },
+      {
+        "name": "Users and Permissions",
+        "count": 197
+      },
+      {
+        "name": "DVD Ready Mail",
+        "count": 190
+      },
+      {
+        "name": "Termination confirmation",
+        "count": 181
+      },
+      {
+        "name": "SOT",
+        "count": 176
+      },
+      {
+        "name": "Welcome email",
+        "count": 147
+      },
+      {
+        "name": "Start project",
+        "count": 134
+      },
+      {
+        "name": "Sales Support",
+        "count": 128
+      },
+      {
+        "name": "Runtime near to end",
+        "count": 117
+      },
+      {
+        "name": "Freeze",
+        "count": 94
+      },
+      {
+        "name": "Closure",
+        "count": 89
+      },
+      {
+        "name": "Data Room Settings",
+        "count": 67
+      },
+      {
+        "name": "End free prep",
+        "count": 66
+      },
+      {
+        "name": "Online Archive",
+        "count": 65
+      },
+      {
+        "name": "Training",
+        "count": 61
+      },
+      {
+        "name": "Finance / Accounting",
+        "count": 59
+      },
+      {
+        "name": "QA Configuration / Handling",
+        "count": 59
+      },
+      {
+        "name": "Document Management",
+        "count": 53
+      },
+      {
+        "name": "Survey Sent",
+        "count": 37
+      },
+      {
+        "name": "Index",
+        "count": 36
+      },
+      {
+        "name": "User Management",
+        "count": 28
+      }
+    ],
+    "products": [
+      {
+        "name": "Transaction",
+        "count": 2050
+      },
+      {
+        "name": "Enterprise",
+        "count": 289
+      },
+      {
+        "name": "Flex",
+        "count": 87
+      },
+      {
+        "name": "Lifecycle",
+        "count": 77
+      },
+      {
+        "name": "Portfolio",
+        "count": 17
+      },
+      {
+        "name": "Internal",
+        "count": 15
+      },
+      {
+        "name": "HUB Premium",
+        "count": 10
+      },
+      {
+        "name": "Preparation Data room",
+        "count": 8
+      },
+      {
+        "name": "HUB Expert",
+        "count": 3
+      }
+    ],
+    "lifecycle": [
+      {
+        "name": "Project Management",
+        "count": 997
+      },
+      {
+        "name": "Internal",
+        "count": 344
+      },
+      {
+        "name": "Data Room",
+        "count": 342
+      },
+      {
+        "name": "Archives / Data Carriers",
+        "count": 159
+      },
+      {
+        "name": "Others",
+        "count": 107
+      },
+      {
+        "name": "Shop",
+        "count": 38
+      },
+      {
+        "name": "Additional Services",
+        "count": 8
+      },
+      {
+        "name": "Notifications",
+        "count": 2
+      }
+    ]
+  },
+  "csat": {
+    "2023-01": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        7,
+        4,
+        10,
+        10,
+        10,
+        0,
+        10,
+        10,
+        10,
+        8,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-02": {
+      "617000000683001": [
+        10,
+        10,
+        9,
+        10,
+        1,
+        0,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2022-11": {
+      "617000000683001": [
+        10,
+        5,
+        8,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2022-12": {
+      "617000000683001": [
+        2,
+        0,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        0,
+        10,
+        10,
+        10,
+        10,
+        8,
+        9,
+        9,
+        9,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-04": {
+      "617000000683001": [
+        10,
+        8,
+        10,
+        3,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        7,
+        9,
+        10,
+        8,
+        0,
+        10,
+        8,
+        4,
+        10,
+        6,
+        9,
+        10,
+        10,
+        10,
+        10,
+        8,
+        0,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10
+      ]
+    },
+    "2023-05": {
+      "617000000683001": [
+        9,
+        10,
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        5,
+        9,
+        9,
+        10,
+        10,
+        10,
+        4,
+        10
+      ]
+    },
+    "2023-06": {
+      "617000000683001": [
+        9,
+        2,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        8,
+        4,
+        5,
+        10,
+        8,
+        10,
+        10,
+        9,
+        8,
+        9,
+        10,
+        1,
+        1,
+        7,
+        10
+      ]
+    },
+    "2023-07": {
+      "617000000683001": [
+        7,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-08": {
+      "617000000683001": [
+        7,
+        10,
+        10,
+        10,
+        10,
+        1,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-09": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        8,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-10": {
+      "617000000683001": [
+        9,
+        10,
+        9,
+        8,
+        10,
+        10,
+        10,
+        4,
+        7,
+        9,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2023-11": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        9
+      ]
+    },
+    "2023-12": {
+      "617000000683001": [
+        0,
+        10,
+        9,
+        10,
+        9,
+        8,
+        10,
+        9,
+        10,
+        10
+      ]
+    },
+    "2024-01": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2024-02": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        0,
+        10,
+        10,
+        9
+      ]
+    },
+    "2023-03": {
+      "617000000683001": [
+        8,
+        10,
+        10,
+        10,
+        9,
+        7,
+        9,
+        10,
+        8,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        5,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        8,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2024-03": {
+      "617000000683001": [
+        10,
+        10,
+        9,
+        8,
+        10,
+        10
+      ]
+    },
+    "2024-04": {
+      "617000000683001": [
+        10,
+        9,
+        7,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        8,
+        9
+      ]
+    },
+    "2024-05": {
+      "617000000683001": [
+        10,
+        8,
+        10,
+        10,
+        8,
+        10,
+        8,
+        10
+      ]
+    },
+    "2024-06": {
+      "617000000683001": [
+        10,
+        9,
+        10,
+        10,
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        8,
+        7
+      ]
+    },
+    "2024-07": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        9,
+        8
+      ]
+    },
+    "2024-08": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        8,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        8
+      ]
+    },
+    "2024-09": {
+      "617000000683001": [
+        10,
+        9,
+        10,
+        10,
+        9,
+        6,
+        10,
+        9,
+        10,
+        8,
+        10,
+        10,
+        6,
+        10,
+        10
+      ]
+    },
+    "2024-10": {
+      "617000000683001": [
+        1,
+        10,
+        0,
+        8,
+        8,
+        9,
+        9,
+        9
+      ]
+    },
+    "2024-11": {
+      "617000000683001": [
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        0,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9
+      ]
+    },
+    "2024-12": {
+      "617000000683001": [
+        8,
+        9,
+        7,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2025-01": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        7,
+        10,
+        10,
+        10,
+        10,
+        9
+      ]
+    },
+    "2025-02": {
+      "617000000683001": [
+        3,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        0,
+        10,
+        10
+      ],
+      "617000003166001": [
+        10,
+        9,
+        10,
+        10,
+        6,
+        10,
+        9,
+        3,
+        10,
+        10
+      ]
+    },
+    "2025-08": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        0,
+        1,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10
+      ],
+      "617000003166001": [
+        10,
+        8,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2025-03": {
+      "617000003166001": [
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        8,
+        9,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10
+      ],
+      "617000000683001": [
+        10,
+        10,
+        8,
+        10,
+        8,
+        9
+      ]
+    },
+    "2025-04": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        8,
+        10,
+        9,
+        10
+      ],
+      "617000003166001": [
+        10,
+        5,
+        10,
+        5,
+        7,
+        7,
+        8,
+        10,
+        10,
+        9,
+        9
+      ]
+    },
+    "2025-05": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9
+      ],
+      "617000003166001": [
+        9,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    "2025-06": {
+      "617000000683001": [
+        10,
+        10,
+        10,
+        9,
+        8
+      ],
+      "617000003166001": [
+        10,
+        9,
+        9,
+        10,
+        10
+      ]
+    },
+    "2025-07": {
+      "617000003166001": [
+        10,
+        10,
+        9,
+        10,
+        10,
+        9,
+        9,
+        10,
+        10,
+        9,
+        10,
+        10,
+        8
+      ],
+      "617000000683001": [
+        10,
+        9,
+        10,
+        0,
+        10,
+        5,
+        10,
+        10,
+        10,
+        6
+      ]
+    },
+    "2026-02": {
+      "617000000683001": [
+        10,
+        0,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        8,
+        10,
+        10,
+        10,
+        1,
+        10
+      ],
+      "617000003166001": [
+        9,
+        9,
+        10,
+        8,
+        10,
+        7,
+        10,
+        10,
+        9,
+        10,
+        10,
+        9,
+        10,
+        10
+      ]
+    },
+    "2026-01": {
+      "617000003166001": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "617000000683001": [
+        9,
+        10,
+        10,
+        0,
+        4,
+        10
+      ]
+    },
+    "2025-12": {
+      "617000003166001": [
+        10,
+        8,
+        9,
+        10,
+        10,
+        10,
+        10,
+        7,
+        10,
+        10,
+        8,
+        10,
+        8,
+        10
+      ],
+      "617000000683001": [
+        8,
+        10,
+        10,
+        10
+      ]
+    },
+    "2025-11": {
+      "617000003166001": [
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9
+      ],
+      "617000000683001": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        7,
+        10,
+        7,
+        10,
+        9,
+        0
+      ]
+    },
+    "2025-09": {
+      "617000000683001": [
+        10,
+        9,
+        10,
+        9,
+        10,
+        10,
+        6,
+        10,
+        10,
+        0,
+        10,
+        5
+      ],
+      "617000003166001": [
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10,
+        5,
+        9,
+        10
+      ]
+    },
+    "2025-10": {
+      "617000000683001": [
+        10,
+        8,
+        10,
+        10,
+        10,
+        10,
+        9,
+        10,
+        10,
+        0,
+        9,
+        10,
+        10,
+        9,
+        10,
+        10,
+        10
+      ],
+      "617000003166001": [
+        10,
+        10,
+        9,
+        10,
+        10,
+        7,
+        10,
+        9,
+        9,
+        10,
+        7,
+        9,
+        8
+      ]
+    }
+  },
+  "departments": {
+    "CS Frankfurt": 3364,
+    "CS International": 2523,
+    "Drooms Support": 588
+  },
+  "channels": {
+    "Email": 4612,
+    "Phone": 877
+  },
+  "region_tickets": {
+    "DACH": 3212,
+    "Other": 253,
+    "Spain": 1137,
+    "France": 651,
+    "UK": 236
+  }
+}
