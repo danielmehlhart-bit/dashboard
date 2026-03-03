@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Service Dashboard — Drooms</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
+  .header { background: #fff; padding: 1rem 2rem; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10; }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 1.3rem; font-weight: 700; }
+  .header .meta { color: #64748b; font-size: 0.85rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; }
+  .filter-bar { display: flex; gap: 0.8rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+  .filter-btn.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .kpi { background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .kpi .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .kpi .value { font-size: 2rem; font-weight: 700; margin: 0.2rem 0; }
+  .kpi .sub { font-size: 0.8rem; color: #94a3b8; }
+  .section { margin-bottom: 1.5rem; }
+  .section h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .card { background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 8px 12px; border-bottom: 2px solid #e2e8f0; font-size: 0.78rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; cursor: pointer; }
+  th:hover { color: #3b82f6; }
+  td { border-bottom: 1px solid #f1f5f9; }
+  tr:hover { background: #f8fafc; }
+  .region-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.8rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .note { text-align: center; color: #94a3b8; font-size: 0.78rem; margin-top: 1rem; }
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .container { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <h1>📊 Customer Service Dashboard</h1>
+    <div class="meta">YTD 2026 · 4,900 of 10,460 tickets sampled · Stand: 3. März 2026</div>
+  </div>
+</div>
+<div class="container">
+
+<!-- Filter -->
+<div class="filter-bar">
+  <span style="font-size:0.82rem;color:#64748b;font-weight:600;">Region:</span>
+  <button class="filter-btn active" onclick="filterRegion('All')">All</button>
+  <button class="filter-btn" onclick="filterRegion('DACH')">🇩🇪 DACH</button>
+  <button class="filter-btn" onclick="filterRegion('Spain')">🇪🇸 Spain</button>
+  <button class="filter-btn" onclick="filterRegion('France')">🇫🇷 France</button>
+  <button class="filter-btn" onclick="filterRegion('UK')">🇬🇧 UK</button>
+  <button class="filter-btn" onclick="filterRegion('Italy')">🇮🇹 Italy</button>
+</div>
+
+<!-- KPIs -->
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="label">Total Tickets</div>
+    <div class="value" style="color:#0f172a;">10,460</div>
+    <div class="sub">YTD 2026</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Open</div>
+    <div class="value" style="color:#dc2626;">89</div>
+    <div class="sub">+ 368 on hold</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Closed</div>
+    <div class="value" style="color:#059669;">4,443</div>
+    <div class="sub">91% resolution rate</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Avg per Agent</div>
+    <div class="value" style="color:#3b82f6;">135</div>
+    <div class="sub">21 mapped agents</div>
+  </div>
+</div>
+
+<!-- Regions -->
+<div class="section">
+  <h2>🌍 Regional Breakdown</h2>
+  <div class="region-grid">
+    <div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #1e40af;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🇩🇪</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">DACH</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#1e40af;margin:0.3rem 0;">1575</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">11 agents · 143 avg</div>
+    </div>
+<div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #dc2626;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🇪🇸</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">Spain</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#dc2626;margin:0.3rem 0;">768</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">5 agents · 154 avg</div>
+    </div>
+<div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #2563eb;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🇫🇷</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">France</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#2563eb;margin:0.3rem 0;">357</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">2 agents · 178 avg</div>
+    </div>
+<div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #7c3aed;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🇬🇧</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">UK</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#7c3aed;margin:0.3rem 0;">36</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">2 agents · 18 avg</div>
+    </div>
+<div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #059669;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🇮🇹</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">Italy</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#059669;margin:0.3rem 0;">92</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">1 agents · 92 avg</div>
+    </div>
+<div style="background:#fff;border-radius:12px;padding:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #6b7280;">
+      <div style="font-size:1.5rem;margin-bottom:0.3rem;">🔹</div>
+      <div style="font-size:0.85rem;font-weight:700;color:#222;">Other</div>
+      <div style="font-size:1.8rem;font-weight:700;color:#6b7280;margin:0.3rem 0;">2072</div>
+      <div style="font-size:0.78rem;color:#94a3b8;">10 agents · 207 avg</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Two columns -->
+<div class="two-col">
+  <div class="section">
+    <h2>🏢 Department Split</h2>
+    <div class="card">
+      <div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">CS Frankfurt</span><span style="color:#64748b;">1557</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:100%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">CS International</span><span style="color:#64748b;">1274</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:82%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">QA-CT</span><span style="color:#64748b;">789</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:51%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">Drooms Invoices</span><span style="color:#64748b;">403</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:26%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">Offers-Orders</span><span style="color:#64748b;">319</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:20%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">Drooms Support</span><span style="color:#64748b;">290</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:19%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">Notifications</span><span style="color:#64748b;">177</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:11%;"></div></div>
+    </div>
+<div style="margin-bottom:0.6rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:2px;">
+        <span style="font-weight:500;">Drooms Enablement</span><span style="color:#64748b;">46</span>
+      </div>
+      <div style="background:#f1f5f9;border-radius:4px;height:10px;"><div style="background:#3b82f6;border-radius:4px;height:10px;width:3%;"></div></div>
+    </div>
+
+    </div>
+  </div>
+  <div class="section">
+    <h2>📅 Monthly Volume</h2>
+    <div class="card">
+      <div style="display:flex;gap:1rem;align-items:flex-end;padding-top:0.5rem;">
+        <div style="text-align:center;flex:1;">
+      <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:4px;">Jan</div>
+      <div style="background:#f1f5f9;border-radius:6px;height:120px;display:flex;align-items:flex-end;justify-content:center;">
+        <div style="background:#3b82f6;border-radius:6px 6px 0 0;width:80%;height:6%;min-height:4px;"></div>
+      </div>
+      <div style="font-size:0.82rem;font-weight:600;margin-top:4px;">237</div>
+    </div>
+<div style="text-align:center;flex:1;">
+      <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:4px;">Feb</div>
+      <div style="background:#f1f5f9;border-radius:6px;height:120px;display:flex;align-items:flex-end;justify-content:center;">
+        <div style="background:#3b82f6;border-radius:6px 6px 0 0;width:80%;height:100%;min-height:4px;"></div>
+      </div>
+      <div style="font-size:0.82rem;font-weight:600;margin-top:4px;">4271</div>
+    </div>
+<div style="text-align:center;flex:1;">
+      <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:4px;">Mar (partial)</div>
+      <div style="background:#f1f5f9;border-radius:6px;height:120px;display:flex;align-items:flex-end;justify-content:center;">
+        <div style="background:#3b82f6;border-radius:6px 6px 0 0;width:80%;height:9%;min-height:4px;"></div>
+      </div>
+      <div style="font-size:0.82rem;font-weight:600;margin-top:4px;">392</div>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Agent Table -->
+<div class="section">
+  <h2>👤 Agent Performance</h2>
+  <div class="card" style="overflow-x:auto;">
+    <table id="agent-table">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Agent ↕</th>
+          <th onclick="sortTable(1)">Region ↕</th>
+          <th onclick="sortTable(2)" style="text-align:right;">Tickets ↕</th>
+          <th onclick="sortTable(3)" style="text-align:right;">% of Total ↕</th>
+          <th>Distribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Teodor Vasilev Vutov</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">418</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">8.5%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:47.77142857142857%;"></div></div></td>
+    </tr>
+<tr data-region="France">
+      <td style="padding:10px 12px;font-weight:500;">Wissal Dahir</td>
+      <td style="padding:10px 12px;"><span style="background:#2563eb15;color:#2563eb;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">France</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">356</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">7.3%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#2563eb;border-radius:4px;height:8px;width:40.68571428571428%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Peter Hoffmann</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">304</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">6.2%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:34.74285714285714%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Laura Breitenbach</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">287</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">5.9%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:32.800000000000004%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Roberto Porcheddu</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">255</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">5.2%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:29.142857142857142%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Norita Steckner</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">250</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">5.1%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:28.57142857142857%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Jasmin Stoffle</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">237</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">4.8%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:27.085714285714285%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Jennifer Lee Wells</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">223</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">4.6%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:25.485714285714284%;"></div></div></td>
+    </tr>
+<tr data-region="Spain">
+      <td style="padding:10px 12px;font-weight:500;">Cassandra Moir</td>
+      <td style="padding:10px 12px;"><span style="background:#dc262615;color:#dc2626;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Spain</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">204</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">4.2%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#dc2626;border-radius:4px;height:8px;width:23.314285714285717%;"></div></div></td>
+    </tr>
+<tr data-region="Spain">
+      <td style="padding:10px 12px;font-weight:500;">Antonella Miro</td>
+      <td style="padding:10px 12px;"><span style="background:#dc262615;color:#dc2626;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Spain</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">189</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">3.9%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#dc2626;border-radius:4px;height:8px;width:21.6%;"></div></div></td>
+    </tr>
+<tr data-region="Spain">
+      <td style="padding:10px 12px;font-weight:500;">Olga Lopez Eiriz</td>
+      <td style="padding:10px 12px;"><span style="background:#dc262615;color:#dc2626;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Spain</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">179</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">3.7%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#dc2626;border-radius:4px;height:8px;width:20.457142857142856%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Marie-Christin Micklitza</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">172</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">3.5%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:19.657142857142855%;"></div></div></td>
+    </tr>
+<tr data-region="Spain">
+      <td style="padding:10px 12px;font-weight:500;">Irene Maria Mendez Becerra</td>
+      <td style="padding:10px 12px;"><span style="background:#dc262615;color:#dc2626;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Spain</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">165</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">3.4%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#dc2626;border-radius:4px;height:8px;width:18.857142857142858%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Sean Enright</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">154</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">3.1%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:17.599999999999998%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Buket Özkan</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">120</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">2.4%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:13.714285714285715%;"></div></div></td>
+    </tr>
+<tr data-region="Italy">
+      <td style="padding:10px 12px;font-weight:500;">Andrea Galizzi</td>
+      <td style="padding:10px 12px;"><span style="background:#05966915;color:#059669;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Italy</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">92</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">1.9%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#059669;border-radius:4px;height:8px;width:10.514285714285714%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Sascha Vorenberg</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">81</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">1.7%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:9.257142857142856%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Estrella Abenaa Martin</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">68</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">1.4%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:7.7714285714285705%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Hoang Long Pham</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">52</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">1.1%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:5.942857142857143%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Nhat Ha Nguyen</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">40</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.8%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:4.571428571428571%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Carlos Galiano</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">36</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.7%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:4.114285714285714%;"></div></div></td>
+    </tr>
+<tr data-region="UK">
+      <td style="padding:10px 12px;font-weight:500;">Alina Mocanu</td>
+      <td style="padding:10px 12px;"><span style="background:#7c3aed15;color:#7c3aed;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">UK</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">35</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.7%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#7c3aed;border-radius:4px;height:8px;width:4.0%;"></div></div></td>
+    </tr>
+<tr data-region="Spain">
+      <td style="padding:10px 12px;font-weight:500;">Nuria Pena Melero</td>
+      <td style="padding:10px 12px;"><span style="background:#dc262615;color:#dc2626;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Spain</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">31</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.6%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#dc2626;border-radius:4px;height:8px;width:3.5428571428571427%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Ulrich Schauenberg</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">26</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.5%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:2.9714285714285715%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Margarida Costa</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">24</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.5%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:2.742857142857143%;"></div></div></td>
+    </tr>
+<tr data-region="Other">
+      <td style="padding:10px 12px;font-weight:500;">Daniel Mehlhart</td>
+      <td style="padding:10px 12px;"><span style="background:#6b728015;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">Other</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">18</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.4%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#6b7280;border-radius:4px;height:8px;width:2.057142857142857%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Sabrina Keppens</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">4</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.1%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:0.4571428571428572%;"></div></div></td>
+    </tr>
+<tr data-region="DACH">
+      <td style="padding:10px 12px;font-weight:500;">Karl Feicht</td>
+      <td style="padding:10px 12px;"><span style="background:#1e40af15;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">DACH</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">3</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.1%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#1e40af;border-radius:4px;height:8px;width:0.34285714285714286%;"></div></div></td>
+    </tr>
+<tr data-region="UK">
+      <td style="padding:10px 12px;font-weight:500;">Joanna Yuen</td>
+      <td style="padding:10px 12px;"><span style="background:#7c3aed15;color:#7c3aed;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">UK</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">1</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.0%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#7c3aed;border-radius:4px;height:8px;width:0.1142857142857143%;"></div></div></td>
+    </tr>
+<tr data-region="France">
+      <td style="padding:10px 12px;font-weight:500;">Maria Radoykova</td>
+      <td style="padding:10px 12px;"><span style="background:#2563eb15;color:#2563eb;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">France</span></td>
+      <td style="padding:10px 12px;text-align:right;font-weight:600;">1</td>
+      <td style="padding:10px 12px;text-align:right;color:#64748b;">0.0%</td>
+      <td style="padding:10px 12px;"><div style="background:#f1f5f9;border-radius:4px;height:8px;"><div style="background:#2563eb;border-radius:4px;height:8px;width:0.1142857142857143%;"></div></div></td>
+    </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="note">
+  ⚠️ Prototype — data sampled via Zoho Desk API (max 5000 tickets per search). 
+  5,560 tickets not included in agent/department breakdown. 
+  Unassigned tickets (875) hidden from agent table.
+</div>
+
+</div>
+
+<script>
+function filterRegion(region) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#agent-table tbody tr').forEach(tr => {
+    if (region === 'All' || tr.dataset.region === region) {
+      tr.style.display = '';
+    } else {
+      tr.style.display = 'none';
+    }
+  });
+}
+
+let sortDir = {};
+function sortTable(col) {
+  const table = document.getElementById('agent-table');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  sortDir[col] = !sortDir[col];
+  rows.sort((a, b) => {
+    let aVal = a.children[col].textContent.trim();
+    let bVal = b.children[col].textContent.trim();
+    if (col >= 2) {
+      aVal = parseFloat(aVal.replace(/[,%]/g, '')) || 0;
+      bVal = parseFloat(bVal.replace(/[,%]/g, '')) || 0;
+      return sortDir[col] ? aVal - bVal : bVal - aVal;
+    }
+    return sortDir[col] ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+</script>
+</body>
+</html>
