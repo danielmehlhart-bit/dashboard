@@ -33,9 +33,6 @@
   .region-name { font-size: 0.82rem; font-weight: 700; }
   .region-big { font-size: 1.5rem; font-weight: 700; margin: 0.15rem 0; }
   .region-meta { font-size: 0.72rem; color: #94a3b8; margin-bottom: 0.3rem; }
-  .region-metrics { display: flex; gap: 0.8rem; margin-bottom: 0.2rem; }
-  .metric-label { font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
-  .metric-val { font-size: 0.8rem; font-weight: 600; }
   .region-channels { font-size: 0.72rem; color: #64748b; }
   .bar-row { margin-bottom: 0.5rem; }
   .bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 2px; }
@@ -56,18 +53,14 @@
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
   .legend-line { width: 14px; height: 3px; border-radius: 2px; }
   .note { text-align: center; color: #94a3b8; font-size: 0.72rem; margin-top: 1rem; padding: 0.5rem; }
-  @media (max-width: 900px) {
-    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .container { padding: 1rem; }
-  }
+  @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(3, 1fr); } .grid-2, .grid-3 { grid-template-columns: 1fr; } .container { padding: 1rem; } }
 </style>
 </head>
 <body>
 <div class="header">
   <div class="header-inner">
     <h1>📊 Customer Service Dashboard</h1>
-    <div class="meta">YTD 2026 · 10,193 tickets · FRT via thread analysis (auto-replies excluded) · Stand: 3. März 2026</div>
+    <div class="meta">YTD 2026 · 10,193 tickets · Calls excluded from FRT/RT · Stand: 3. März 2026</div>
   </div>
 </div>
 <div class="container">
@@ -83,7 +76,6 @@
   <button class="filter-btn" onclick="filterRegion('Other')">🔹 Other</button>
 </div>
 
-<!-- KPIs -->
 <div class="kpi-grid">
   <div class="kpi">
     <div class="label">Total Tickets</div>
@@ -92,13 +84,13 @@
   </div>
   <div class="kpi">
     <div class="label">First Response</div>
-    <div class="value" style="color:#2563eb;">~20m</div>
-    <div class="sub">median (human replies only)</div>
+    <div class="value" style="color:#2563eb;">43m</div>
+    <div class="sub">median Feb '26 (email only)</div>
   </div>
   <div class="kpi">
     <div class="label">Resolution Time</div>
-    <div class="value" style="color:#059669;">94h 31m</div>
-    <div class="sub">median (Feb 2026)</div>
+    <div class="value" style="color:#059669;">108h 8m</div>
+    <div class="sub">median Feb '26 (email only)</div>
   </div>
   <div class="kpi">
     <div class="label">📧 Emails</div>
@@ -112,314 +104,255 @@
   </div>
 </div>
 
-<!-- Regions -->
 <div class="section">
   <h2>🌍 Regional Performance</h2>
   <div class="region-grid"><div class="region-card" style="border-left:4px solid #1e40af;">
       <div class="region-header"><span class="region-flag">🇩🇪</span> <span class="region-name">DACH</span></div>
       <div class="region-big" style="color:#1e40af;">3,333</div>
-      <div class="region-meta">11 agents · 303 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">—</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">24m</span></div>
-      </div>
+      <div class="region-meta">10 agents · 333 avg</div>
       <div class="region-channels">📧 2,754 · 📞 579</div>
     </div>
 <div class="region-card" style="border-left:4px solid #dc2626;">
       <div class="region-header"><span class="region-flag">🇪🇸</span> <span class="region-name">Spain</span></div>
       <div class="region-big" style="color:#dc2626;">1,463</div>
-      <div class="region-meta">6 agents · 244 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">—</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">2h 3m</span></div>
-      </div>
+      <div class="region-meta">6 agents · 244 avg</div>
       <div class="region-channels">📧 1,253 · 📞 210</div>
     </div>
 <div class="region-card" style="border-left:4px solid #2563eb;">
       <div class="region-header"><span class="region-flag">🇫🇷</span> <span class="region-name">France</span></div>
       <div class="region-big" style="color:#2563eb;">640</div>
-      <div class="region-meta">2 agents · 320 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">2m</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">22m</span></div>
-      </div>
+      <div class="region-meta">2 agents · 320 avg</div>
       <div class="region-channels">📧 580 · 📞 60</div>
     </div>
 <div class="region-card" style="border-left:4px solid #7c3aed;">
       <div class="region-header"><span class="region-flag">🇬🇧</span> <span class="region-name">UK</span></div>
       <div class="region-big" style="color:#7c3aed;">91</div>
-      <div class="region-meta">2 agents · 46 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">—</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">—</span></div>
-      </div>
+      <div class="region-meta">2 agents · 46 avg</div>
       <div class="region-channels">📧 84 · 📞 7</div>
     </div>
 <div class="region-card" style="border-left:4px solid #059669;">
       <div class="region-header"><span class="region-flag">🇮🇹</span> <span class="region-name">Italy</span></div>
       <div class="region-big" style="color:#059669;">195</div>
-      <div class="region-meta">1 agents · 195 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">—</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">—</span></div>
-      </div>
+      <div class="region-meta">0 agents · 195 avg</div>
       <div class="region-channels">📧 178 · 📞 17</div>
     </div>
 <div class="region-card" style="border-left:4px solid #6b7280;">
       <div class="region-header"><span class="region-flag">🔹</span> <span class="region-name">Other</span></div>
       <div class="region-big" style="color:#6b7280;">2,745</div>
-      <div class="region-meta">11 agents · 250 avg/agent</div>
-      <div class="region-metrics">
-        <div><span class="metric-label">FRT</span> <span class="metric-val">15m</span></div>
-        <div><span class="metric-label">Resolve</span> <span class="metric-val">2h 17m</span></div>
-      </div>
+      <div class="region-meta">2 agents · 1372 avg</div>
       <div class="region-channels">📧 2,723 · 📞 22</div>
     </div>
 </div>
 </div>
 
-<!-- Trend Charts -->
-<div class="section">
-  <h2>📈 Monthly Trends — Year-over-Year</h2>
-</div>
+<div class="section"><h2>📈 Monthly Trends — Year-over-Year (calls excluded from FRT/RT)</h2></div>
 
 <div class="grid-2">
   <div class="card" style="padding:1rem;">
-    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;color:#334155;">📦 Ticket Volume</div>
+    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">📦 Ticket Volume</div>
     <svg viewBox="0 0 700 240" style="width:100%;height:auto;">
-  <line x1="55" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">8k</text>
-  <line x1="55" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">6k</text>
-  <line x1="55" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">4k</text>
-  <line x1="55" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">2k</text>
-  <line x1="55" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">0</text>
-  <rect x="68.02083333333333" y="89.87891903492925" width="26.041666666666668" height="110.12108096507075" fill="#3b82f6" rx="3" opacity="1"/>
-  <text x="81.04166666666666" y="84.87891903492925" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">5k</text>
-  <text x="81.04166666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
-  <rect x="120.10416666666667" y="94.06399227371092" width="26.041666666666668" height="105.93600772628908" fill="#3b82f6" rx="3" opacity="1"/>
-  <text x="133.125" y="89.06399227371092" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">4k</text>
-  <text x="133.125" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
-  <rect x="172.18750000000003" y="191.52254395221146" width="26.041666666666668" height="8.477456047788529" fill="#3b82f6" rx="3" opacity="1"/>
-  <text x="185.20833333333337" y="186.52254395221146" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">395</text>
-  <text x="185.20833333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
-  <rect x="224.27083333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="237.29166666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
-  <rect x="276.3541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="289.37500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
-  <rect x="328.4375" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="341.45833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
-  <rect x="380.5208333333333" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="393.5416666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
-  <rect x="432.6041666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="445.62500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
-  <rect x="484.6875" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="497.70833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
-  <rect x="536.7708333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="549.7916666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
-  <rect x="588.8541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="601.875" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
-  <rect x="640.9375000000001" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="653.9583333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
-  <polyline points="81.04166666666667,86.9600987248046 133.125,95.15854989000768 185.20833333333334,84.19151181299517 237.29166666666666,82.73210165793284 289.37500000000006,97.56228426305151 341.45833333333337,85.90846493659792 393.5416666666667,66.95759483483266 445.62500000000006,114.36696296031333 497.70833333333337,84.04127841467994 549.7916666666666,82.41017294725732 601.875,76.9373848657736 653.9583333333334,43.47826086956519" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
-  <circle cx="81.04166666666667" cy="86.9600987248046" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="133.125" cy="95.15854989000768" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="185.20833333333334" cy="84.19151181299517" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="237.29166666666666" cy="82.73210165793284" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="289.37500000000006" cy="97.56228426305151" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="341.45833333333337" cy="85.90846493659792" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="393.5416666666667" cy="66.95759483483266" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="445.62500000000006" cy="114.36696296031333" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="497.70833333333337" cy="84.04127841467994" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="549.7916666666666" cy="82.41017294725732" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="601.875" cy="76.9373848657736" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="653.9583333333334" cy="43.47826086956519" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <line x1="60" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">8k</text>
+  <line x1="60" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">6k</text>
+  <line x1="60" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">4k</text>
+  <line x1="60" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">2k</text>
+  <line x1="60" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">0</text>
+  <rect x="72.91666666666667" y="89.87891903492925" width="25.833333333333332" height="110.12108096507075" fill="#3b82f6" rx="3" opacity="1"/>
+  <text x="85.83333333333334" y="84.87891903492925" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">5k</text>
+  <text x="85.83333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
+  <rect x="124.58333333333333" y="94.06399227371092" width="25.833333333333332" height="105.93600772628908" fill="#3b82f6" rx="3" opacity="1"/>
+  <text x="137.5" y="89.06399227371092" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">4k</text>
+  <text x="137.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
+  <rect x="176.24999999999997" y="191.52254395221146" width="25.833333333333332" height="8.477456047788529" fill="#3b82f6" rx="3" opacity="1"/>
+  <text x="189.16666666666663" y="186.52254395221146" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="600">395</text>
+  <text x="189.16666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
+  <rect x="227.91666666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="240.83333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
+  <rect x="279.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="292.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
+  <rect x="331.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="344.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
+  <rect x="382.9166666666667" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="395.8333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
+  <rect x="434.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="447.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
+  <rect x="486.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="499.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
+  <rect x="537.9166666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="550.8333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
+  <rect x="589.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="602.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
+  <rect x="641.2499999999999" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="654.1666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
+  <polyline points="85.83333333333333,86.9600987248046 137.5,95.15854989000768 189.16666666666666,84.19151181299517 240.83333333333334,82.73210165793284 292.49999999999994,97.56228426305151 344.16666666666663,85.90846493659792 395.8333333333333,66.95759483483266 447.49999999999994,114.36696296031333 499.16666666666663,84.04127841467994 550.8333333333334,82.41017294725732 602.5,76.9373848657736 654.1666666666666,43.47826086956519" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <circle cx="85.83333333333333" cy="86.9600987248046" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="137.5" cy="95.15854989000768" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="189.16666666666666" cy="84.19151181299517" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="240.83333333333334" cy="82.73210165793284" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="292.49999999999994" cy="97.56228426305151" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="344.16666666666663" cy="85.90846493659792" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="395.8333333333333" cy="66.95759483483266" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="447.49999999999994" cy="114.36696296031333" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="499.16666666666663" cy="84.04127841467994" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="550.8333333333334" cy="82.41017294725732" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="602.5" cy="76.9373848657736" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="654.1666666666666" cy="43.47826086956519" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
 </svg>
-    <div class="legend" style="color:#3b82f6;">
-      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div> 2026</div>
-      <div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div>
-    </div>
+    <div class="legend" style="color:#3b82f6;"><div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div> 2026</div><div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div></div>
   </div>
   <div class="card" style="padding:1rem;">
-    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;color:#334155;">⚡ First Response Time (median)</div>
+    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">⚡ First Response Time (median, email only)</div>
     <svg viewBox="0 0 700 240" style="width:100%;height:auto;">
-  <line x1="55" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">2h 23m</text>
-  <line x1="55" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">1h 47m</text>
-  <line x1="55" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">1h 11m</text>
-  <line x1="55" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">35m</text>
-  <line x1="55" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">< 1m</text>
-  <rect x="68.02083333333333" y="186.22608695652173" width="26.041666666666668" height="13.77391304347826" fill="#2563eb" rx="3" opacity="1"/>
-  <text x="81.04166666666666" y="181.22608695652173" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">11m</text>
-  <text x="81.04166666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
-  <rect x="120.10416666666667" y="173.70434782608694" width="26.041666666666668" height="26.295652173913044" fill="#2563eb" rx="3" opacity="1"/>
-  <text x="133.125" y="168.70434782608694" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">21m</text>
-  <text x="133.125" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
-  <rect x="172.18750000000003" y="173.70434782608694" width="26.041666666666668" height="26.295652173913044" fill="#2563eb" rx="3" opacity="1"/>
-  <text x="185.20833333333337" y="168.70434782608694" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">21m</text>
-  <text x="185.20833333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
-  <rect x="224.27083333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="237.29166666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
-  <rect x="276.3541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="289.37500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
-  <rect x="328.4375" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="341.45833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
-  <rect x="380.5208333333333" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="393.5416666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
-  <rect x="432.6041666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="445.62500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
-  <rect x="484.6875" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="497.70833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
-  <rect x="536.7708333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="549.7916666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
-  <rect x="588.8541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="601.875" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
-  <rect x="640.9375000000001" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="653.9583333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
-  <polyline points="81.04166666666667,196.24347826086955 133.125,192.48695652173913 185.20833333333334,127.37391304347825 237.29166666666666,159.9304347826087 289.37500000000006,163.68695652173912 341.45833333333337,186.22608695652173 393.5416666666667,173.70434782608694 445.62500000000006,131.1304347826087 497.70833333333337,181.2173913043478 549.7916666666666,43.47826086956522 601.875,189.98260869565217 653.9583333333334,177.4608695652174" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
-  <circle cx="81.04166666666667" cy="196.24347826086955" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="133.125" cy="192.48695652173913" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="185.20833333333334" cy="127.37391304347825" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="237.29166666666666" cy="159.9304347826087" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="289.37500000000006" cy="163.68695652173912" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="341.45833333333337" cy="186.22608695652173" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="393.5416666666667" cy="173.70434782608694" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="445.62500000000006" cy="131.1304347826087" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="497.70833333333337" cy="181.2173913043478" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="549.7916666666666" cy="43.47826086956522" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="601.875" cy="189.98260869565217" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="653.9583333333334" cy="177.4608695652174" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <line x1="60" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">3h 8m</text>
+  <line x1="60" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">2h 21m</text>
+  <line x1="60" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">1h 34m</text>
+  <line x1="60" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">47m</text>
+  <line x1="60" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">—</text>
+  <rect x="72.91666666666667" y="148.46235418875926" width="25.833333333333332" height="51.53764581124072" fill="#2563eb" rx="3" opacity="1"/>
+  <text x="85.83333333333334" y="143.46235418875926" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">54m</text>
+  <text x="85.83333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
+  <rect x="124.58333333333333" y="158.96076352067868" width="25.833333333333332" height="41.03923647932132" fill="#2563eb" rx="3" opacity="1"/>
+  <text x="137.5" y="153.96076352067868" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">43m</text>
+  <text x="137.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
+  <rect x="176.24999999999997" y="194.27359490986214" width="25.833333333333332" height="5.726405090137859" fill="#2563eb" rx="3" opacity="1"/>
+  <text x="189.16666666666663" y="189.27359490986214" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="600">6m</text>
+  <text x="189.16666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
+  <rect x="227.91666666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="240.83333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
+  <rect x="279.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="292.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
+  <rect x="331.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="344.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
+  <rect x="382.9166666666667" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="395.8333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
+  <rect x="434.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="447.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
+  <rect x="486.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="499.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
+  <rect x="537.9166666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="550.8333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
+  <rect x="589.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="602.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
+  <rect x="641.2499999999999" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="654.1666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
+  <polyline points="85.83333333333333,194.27359490986214 137.5,190.4559915164369 189.16666666666666,43.47826086956522 240.83333333333334,170.4135737009544 292.49999999999994,169.4591728525981 344.16666666666663,177.09437963944856 395.8333333333333,162.7783669141039 447.49999999999994,142.7359490986214 499.16666666666663,185.68398727465535 550.8333333333334,121.73913043478261 602.5,189.50159066808058 654.1666666666666,179.0031813361612" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <circle cx="85.83333333333333" cy="194.27359490986214" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="137.5" cy="190.4559915164369" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="189.16666666666666" cy="43.47826086956522" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="240.83333333333334" cy="170.4135737009544" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="292.49999999999994" cy="169.4591728525981" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="344.16666666666663" cy="177.09437963944856" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="395.8333333333333" cy="162.7783669141039" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="447.49999999999994" cy="142.7359490986214" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="499.16666666666663" cy="185.68398727465535" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="550.8333333333334" cy="121.73913043478261" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="602.5" cy="189.50159066808058" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="654.1666666666666" cy="179.0031813361612" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
 </svg>
-    <div class="legend" style="color:#2563eb;">
-      <div class="legend-item"><div class="legend-dot" style="background:#2563eb;"></div> 2026</div>
-      <div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div>
-    </div>
+    <div class="legend" style="color:#2563eb;"><div class="legend-item"><div class="legend-dot" style="background:#2563eb;"></div> 2026</div><div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div></div>
   </div>
 </div>
 
 <div class="grid-3">
   <div class="card" style="padding:1rem;">
-    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;color:#334155;">✅ Resolution Time (median)</div>
+    <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">✅ Resolution Time (median, email only)</div>
     <svg viewBox="0 0 700 240" style="width:100%;height:auto;">
-  <line x1="55" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">650h 8m</text>
-  <line x1="55" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">487h 36m</text>
-  <line x1="55" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">325h 4m</text>
-  <line x1="55" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">162h 32m</text>
-  <line x1="55" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="47" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">< 1m</text>
-  <rect x="68.02083333333333" y="149.19042247744053" width="26.041666666666668" height="50.80957752255947" fill="#059669" rx="3" opacity="1"/>
-  <text x="81.04166666666666" y="144.19042247744053" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">183h 31m</text>
-  <text x="81.04166666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
-  <rect x="120.10416666666667" y="173.83152173913044" width="26.041666666666668" height="26.168478260869566" fill="#059669" rx="3" opacity="1"/>
-  <text x="133.125" y="168.83152173913044" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">94h 31m</text>
-  <text x="133.125" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
-  <rect x="172.18750000000003" y="199.41396636587368" width="26.041666666666668" height="0.5860336341263331" fill="#059669" rx="3" opacity="1"/>
-  <text x="185.20833333333337" y="194.41396636587368" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">2h 7m</text>
-  <text x="185.20833333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
-  <rect x="224.27083333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="237.29166666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
-  <rect x="276.3541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="289.37500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
-  <rect x="328.4375" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="341.45833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
-  <rect x="380.5208333333333" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="393.5416666666667" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
-  <rect x="432.6041666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="445.62500000000006" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
-  <rect x="484.6875" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="497.70833333333337" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
-  <rect x="536.7708333333334" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="549.7916666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
-  <rect x="588.8541666666667" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="601.875" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
-  <rect x="640.9375000000001" y="200" width="26.041666666666668" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
-  <text x="653.9583333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
-  <polyline points="81.04166666666667,181.92063166529942 133.125,191.8832034454471 185.20833333333334,179.62725594749796 237.29166666666666,179.46113617719442 289.37500000000006,195.02102132895817 341.45833333333337,170.31070549630846 393.5416666666667,185.70908531583265 445.62500000000006,173.9099671862182 497.70833333333337,156.00133305988516 549.7916666666666,147.4738515176374 601.875,172.77481542247745 653.9583333333334,43.47826086956522" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
-  <circle cx="81.04166666666667" cy="181.92063166529942" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="133.125" cy="191.8832034454471" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="185.20833333333334" cy="179.62725594749796" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="237.29166666666666" cy="179.46113617719442" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="289.37500000000006" cy="195.02102132895817" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="341.45833333333337" cy="170.31070549630846" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="393.5416666666667" cy="185.70908531583265" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="445.62500000000006" cy="173.9099671862182" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="497.70833333333337" cy="156.00133305988516" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="549.7916666666666" cy="147.4738515176374" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="601.875" cy="172.77481542247745" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
-  <circle cx="653.9583333333334" cy="43.47826086956522" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <line x1="60" y1="20.0" x2="680" y2="20.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">636h 21m</text>
+  <line x1="60" y1="65.0" x2="680" y2="65.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="69.0" text-anchor="end" fill="#94a3b8" font-size="10">477h 15m</text>
+  <line x1="60" y1="110.0" x2="680" y2="110.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="114.0" text-anchor="end" fill="#94a3b8" font-size="10">318h 10m</text>
+  <line x1="60" y1="155.0" x2="680" y2="155.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="159.0" text-anchor="end" fill="#94a3b8" font-size="10">159h 5m</text>
+  <line x1="60" y1="200.0" x2="680" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="52" y="204.0" text-anchor="end" fill="#94a3b8" font-size="10">—</text>
+  <rect x="72.91666666666667" y="186.11147123646091" width="25.833333333333332" height="13.888528763539076" fill="#059669" rx="3" opacity="1"/>
+  <text x="85.83333333333334" y="181.11147123646091" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">49h 6m</text>
+  <text x="85.83333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jan</text>
+  <rect x="124.58333333333333" y="169.41317901634707" width="25.833333333333332" height="30.58682098365293" fill="#059669" rx="3" opacity="1"/>
+  <text x="137.5" y="164.41317901634707" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">108h 8m</text>
+  <text x="137.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Feb</text>
+  <rect x="176.24999999999997" y="199.40127523660234" width="25.833333333333332" height="0.5987247633976454" fill="#059669" rx="3" opacity="1"/>
+  <text x="189.16666666666663" y="194.40127523660234" text-anchor="middle" fill="#059669" font-size="9" font-weight="600">2h 7m</text>
+  <text x="189.16666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Mar</text>
+  <rect x="227.91666666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="240.83333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Apr</text>
+  <rect x="279.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="292.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">May</text>
+  <rect x="331.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="344.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jun</text>
+  <rect x="382.9166666666667" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="395.8333333333333" y="230" text-anchor="middle" fill="#64748b" font-size="10">Jul</text>
+  <rect x="434.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="447.49999999999994" y="230" text-anchor="middle" fill="#64748b" font-size="10">Aug</text>
+  <rect x="486.25" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="499.16666666666663" y="230" text-anchor="middle" fill="#64748b" font-size="10">Sep</text>
+  <rect x="537.9166666666666" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="550.8333333333334" y="230" text-anchor="middle" fill="#64748b" font-size="10">Oct</text>
+  <rect x="589.5833333333333" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="602.5" y="230" text-anchor="middle" fill="#64748b" font-size="10">Nov</text>
+  <rect x="641.2499999999999" y="200" width="25.833333333333332" height="0" fill="#e2e8f0" rx="3" opacity="0.3"/>
+  <text x="654.1666666666666" y="230" text-anchor="middle" fill="#64748b" font-size="10">Dec</text>
+  <polyline points="85.83333333333333,180.8785225170012 137.5,187.29949202682477 189.16666666666666,192.18829186653625 240.83333333333334,187.76150011196626 292.49999999999994,198.74126368640023 344.16666666666663,192.49944016877438 395.8333333333333,185.39960163588577 447.49999999999994,146.29863165462538 499.16666666666663,192.49944016877438 550.8333333333334,141.80112437681944 602.5,158.25426944971537 654.1666666666666,43.47826086956519" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <circle cx="85.83333333333333" cy="180.8785225170012" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="137.5" cy="187.29949202682477" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="189.16666666666666" cy="192.18829186653625" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="240.83333333333334" cy="187.76150011196626" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="292.49999999999994" cy="198.74126368640023" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="344.16666666666663" cy="192.49944016877438" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="395.8333333333333" cy="185.39960163588577" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="447.49999999999994" cy="146.29863165462538" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="499.16666666666663" cy="192.49944016877438" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="550.8333333333334" cy="141.80112437681944" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="602.5" cy="158.25426944971537" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="654.1666666666666" cy="43.47826086956519" r="3" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
 </svg>
-    <div class="legend" style="color:#059669;">
-      <div class="legend-item"><div class="legend-dot" style="background:#059669;"></div> 2026</div>
-      <div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div>
-    </div>
+    <div class="legend" style="color:#059669;"><div class="legend-item"><div class="legend-dot" style="background:#059669;"></div> 2026</div><div class="legend-item"><div class="legend-line" style="background:#f97316;"></div> 2025</div></div>
   </div>
   <div>
     <div class="card" style="margin-bottom:0.8rem;">
-      <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;color:#334155;">📡 Channel Split</div>
-      <div class="bar-row">
-      <div class="bar-label"><span>📧 Email</span><span class="bar-val">9,289 (91.1%)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:100%;background:#3b82f6;"></div></div>
-    </div>
-<div class="bar-row">
-      <div class="bar-label"><span>📞 Phone</span><span class="bar-val">903 (8.9%)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:10%;background:#f59e0b;"></div></div>
-    </div>
-<div class="bar-row">
-      <div class="bar-label"><span>🔧 Zoho</span><span class="bar-val">1 (0.0%)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:0%;background:#8b5cf6;"></div></div>
-    </div>
+      <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">📡 Channel Split</div>
+      <div class="bar-row"><div class="bar-label"><span>📧 Email</span><span class="bar-val">9,289 (91.1%)</span></div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#3b82f6;"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>📞 Phone</span><span class="bar-val">903 (8.9%)</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#f59e0b;"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>🔧 Zoho</span><span class="bar-val">1 (0.0%)</span></div><div class="bar-track"><div class="bar-fill" style="width:0%;background:#8b5cf6;"></div></div></div>
 
     </div>
     <div class="card">
-      <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;color:#334155;">🏢 Departments</div>
-      <div class="bar-row">
-      <div class="bar-label"><span>CS Frankfurt</span><span class="bar-val">3,353</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:100%;background:#1e40af;"></div></div>
-    </div>
-<div class="bar-row">
-      <div class="bar-label"><span>CS International</span><span class="bar-val">2,515</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:75%;background:#7c3aed;"></div></div>
-    </div>
-<div class="bar-row">
-      <div class="bar-label"><span>Drooms Support</span><span class="bar-val">584</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:17%;background:#059669;"></div></div>
-    </div>
+      <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">🏢 Departments</div>
+      <div class="bar-row"><div class="bar-label"><span>CS Frankfurt</span><span class="bar-val">3,353</span></div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#1e40af;"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>CS International</span><span class="bar-val">2,515</span></div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#7c3aed;"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>Drooms Support</span><span class="bar-val">584</span></div><div class="bar-track"><div class="bar-fill" style="width:17%;background:#059669;"></div></div></div>
 
     </div>
   </div>
 </div>
 
-<!-- Agent Table -->
 <div class="section">
   <h2>👤 Agent Performance</h2>
   <div class="card" style="overflow-x:auto;">
     <table id="agent-table">
-      <thead>
-        <tr>
-          <th onclick="sortTable(0)">Agent ↕</th>
-          <th onclick="sortTable(1)">Region ↕</th>
-          <th onclick="sortTable(2)" style="text-align:right;">Tickets ↕</th>
-          <th onclick="sortTable(3)" style="text-align:right;">📧 Emails ↕</th>
-          <th onclick="sortTable(4)" style="text-align:right;">📞 Calls ↕</th>
-          <th onclick="sortTable(5)" style="text-align:right;">💬 Comments ↕</th>
-          <th onclick="sortTable(6)" style="text-align:right;">🧵 Threads ↕</th>
-          <th onclick="sortTable(7)" style="text-align:right;">⚡ FRT ↕</th>
-          <th onclick="sortTable(8)" style="text-align:right;">✅ Resolve ↕</th>
-        </tr>
-      </thead>
-      <tbody>
-<tr data-region="DACH">
+      <thead><tr>
+        <th onclick="sortTable(0)">Agent ↕</th>
+        <th onclick="sortTable(1)">Region ↕</th>
+        <th onclick="sortTable(2)" style="text-align:right;">Tickets ↕</th>
+        <th onclick="sortTable(3)" style="text-align:right;">📧 Emails ↕</th>
+        <th onclick="sortTable(4)" style="text-align:right;">📞 Calls ↕</th>
+        <th onclick="sortTable(5)" style="text-align:right;">💬 Comments ↕</th>
+        <th onclick="sortTable(6)" style="text-align:right;">🧵 Threads ↕</th>
+        <th onclick="sortTable(7)" style="text-align:right;">⚡ FRT ↕</th>
+        <th onclick="sortTable(8)" style="text-align:right;">✅ Resolve ↕</th>
+      </tr></thead>
+      <tbody><tr data-region="DACH">
       <td class="td-name">Peter Hoffmann</td>
       <td><span class="badge" style="background:#1e40af15;color:#1e40af;">DACH</span></td>
       <td class="td-num">633</td>
@@ -452,7 +385,6 @@
       <td class="td-num">—</td>
       <td class="td-num">8m</td>
     </tr>
-
 <tr data-region="France">
       <td class="td-name">Wissal Dahir</td>
       <td><span class="badge" style="background:#2563eb15;color:#2563eb;">France</span></td>
@@ -475,7 +407,6 @@
       <td class="td-num">—</td>
       <td class="td-num">2h 12m</td>
     </tr>
-
 <tr data-region="DACH">
       <td class="td-name">Marie-Christin Micklitza</td>
       <td><span class="badge" style="background:#1e40af15;color:#1e40af;">DACH</span></td>
@@ -542,8 +473,6 @@
       <td class="td-num">—</td>
       <td class="td-num">28h 14m</td>
     </tr>
-
-
 <tr data-region="DACH">
       <td class="td-name">Sascha Vorenberg</td>
       <td><span class="badge" style="background:#1e40af15;color:#1e40af;">DACH</span></td>
@@ -621,18 +550,6 @@
       <td class="td-num">—</td>
       <td class="td-num">15m</td>
     </tr>
-
-<tr data-region="Other">
-      <td class="td-name">Ulrich Schauenberg</td>
-      <td><span class="badge" style="background:#6b728015;color:#6b7280;">Other</span></td>
-      <td class="td-num">50</td>
-      <td class="td-num">50</td>
-      <td class="td-num">0</td>
-      <td class="td-num">8</td>
-      <td class="td-num">237</td>
-      <td class="td-num">—</td>
-      <td class="td-num">—</td>
-    </tr>
 <tr data-region="Other">
       <td class="td-name">Margarida Costa</td>
       <td><span class="badge" style="background:#6b728015;color:#6b7280;">Other</span></td>
@@ -644,8 +561,6 @@
       <td class="td-num">—</td>
       <td class="td-num">—</td>
     </tr>
-
-
 <tr data-region="UK">
       <td class="td-name">Joanna Yuen</td>
       <td><span class="badge" style="background:#7c3aed15;color:#7c3aed;">UK</span></td>
@@ -668,8 +583,6 @@
       <td class="td-num">—</td>
       <td class="td-num">—</td>
     </tr>
-
-
 <tr data-region="Spain">
       <td class="td-name">Elisabet Rossich</td>
       <td><span class="badge" style="background:#dc262615;color:#dc2626;">Spain</span></td>
@@ -687,14 +600,13 @@
 </div>
 
 <div class="note">
-  Prototype · FRT = time to first human reply (auto-replies &lt; 1 min excluded) · 
-  Metrics sampled: 40 tickets/month (2025-01 to 2026-03) · 
-  Agent FRT/RT from 300 sampled tickets · 
-  Zoho API limit: ~5000 tickets/search
+  Calls (inbound/outbound) excluded from FRT &amp; Resolution trends · 
+  FRT: auto-replies (&lt; 1 min) filtered out · 
+  40 tickets sampled per month · 
+  Agent-level FRT/RT from separate 300-ticket sample
 </div>
 
 </div>
-
 <script>
 function filterRegion(region) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -703,7 +615,6 @@ function filterRegion(region) {
     tr.style.display = (region === 'All' || tr.dataset.region === region) ? '' : 'none';
   });
 }
-
 let sortDir = {};
 function sortTable(col) {
   const table = document.getElementById('agent-table');
@@ -714,20 +625,13 @@ function sortTable(col) {
     let aVal = a.children[col].textContent.trim();
     let bVal = b.children[col].textContent.trim();
     if (col >= 2) {
-      const parseVal = v => {
-        if (v === '—') return -1;
-        v = v.replace(/[,<~ ]/g, '');
-        if (v.includes('h')) { const p = v.split('h'); return parseInt(p[0])*60 + (parseInt(p[1]) || 0); }
-        if (v.includes('m')) return parseInt(v);
-        return parseFloat(v) || 0;
-      };
-      aVal = parseVal(aVal); bVal = parseVal(bVal);
-      return sortDir[col] ? aVal - bVal : bVal - aVal;
+      const p = v => { if (v==='—') return -1; v=v.replace(/[,<~ ]/g,''); if(v.includes('h')){const x=v.split('h');return parseInt(x[0])*60+(parseInt(x[1])||0);} if(v.includes('m'))return parseInt(v); return parseFloat(v)||0; };
+      aVal=p(aVal);bVal=p(bVal);
+      return sortDir[col]?aVal-bVal:bVal-aVal;
     }
-    return sortDir[col] ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    return sortDir[col]?aVal.localeCompare(bVal):bVal.localeCompare(aVal);
   });
   rows.forEach(r => tbody.appendChild(r));
 }
 </script>
-</body>
-</html>
+</body></html>
