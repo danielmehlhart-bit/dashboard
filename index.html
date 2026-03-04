@@ -29,7 +29,7 @@
   .todo .check { width: 20px; height: 20px; border: 2px solid #ddd; border-radius: 50%; flex-shrink: 0; margin-top: 0.15rem; }
   .todo .check.urgent { border-color: #ff385c; }
   .todo .text { font-size: 0.92rem; color: #222; }
-  .todo .meta { font-size: 0.78rem; color: #999; margin-top: 0.15rem; }
+  .todo .meta { font-size: 0.78rem; color: #999; margin-top: 0.15rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
   .tag { display: inline-block; font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-right: 0.3rem; font-weight: 600; }
   .tag.ac { background: #e8f5e9; color: #2e7d32; }
   .tag.bpp { background: #fce4ec; color: #c62828; }
@@ -109,9 +109,12 @@
   @media print { .header { position: static; } body { background: #fff; } }
   @media (max-width: 600px) {
     .container { padding: 1rem; }
-    .projects-grid, .grid, .ideas-grid, .research-grid, .leads-grid { grid-template-columns: 1fr; }
+    .projects-grid, .grid, .ideas-grid, .research-grid { grid-template-columns: 1fr; }
+    .leads-grid { grid-template-columns: 1fr; }
     .weather-bar { flex-direction: column; align-items: flex-start; }
     .compass-grid { grid-template-columns: 1fr; }
+    .todo .meta { font-size: 0.82rem; }
+    .tag { font-size: 0.72rem; }
   }
 </style>
 </head>
@@ -126,21 +129,46 @@
 
 <div class="container">
 
+<!-- Heute auf einen Blick -->
+<div class="card" style="border-left:3px solid #ff385c;background:#fffaf7;margin-bottom:1.5rem;">
+  <div style="font-size:0.95rem;line-height:1.9;">
+    <div>📅 Mittwoch, 4. März 2026</div>
+    <div>📅 18:30 — MAINCLAW Frankfurt Meetup</div>
+    <div>✅ 4 offene TODOs · 🎯 2 Leads</div>
+  </div>
+</div>
+
+<!-- Kompass -->
+<h2>🧭 Kompass</h2>
+<div class="compass">
+  <div class="question">"Baue ich ein Produkt — oder baue ich Projekte?"</div>
+  <div class="compass-grid">
+    <div class="compass-do">✓ Früh Geld nehmen</div>
+    <div class="compass-dont">✗ Zu individuell werden</div>
+    <div class="compass-do">✓ Klarer Core, wiederverwendbar</div>
+    <div class="compass-dont">✗ Zu früh skalieren</div>
+    <div class="compass-do">✓ Messbare Outcomes</div>
+    <div class="compass-dont">✗ Preise aus Angst senken</div>
+  </div>
+</div>
+
 <!-- Wetter -->
 <div class="weather-bar">
-  <div class="weather-slot">
-    <div class="label">🌅 Morgens (7–10h)</div>
-    <div class="value">⚠️ Service offline</div>
-    <div class="detail">wttr.in nicht erreichbar</div>
+  <div class="weather-slot" style="text-align:left;">
+    <div class="value" style="font-size:0.95rem;color:#999;">🌤 Wetter nicht verfügbar</div>
   </div>
-  <div class="weather-slot">
-    <div class="label">🌇 Abends (17–19h)</div>
-    <div class="value">⚠️ Service offline</div>
-    <div class="detail">wttr.in nicht erreichbar</div>
+</div>
+
+<!-- Meetings -->
+<h2 style="border-left:3px solid #ff385c;padding-left:0.5rem;">📅 Meetings diese Woche</h2>
+<div class="card">
+  <div class="meeting">
+    <div class="time-block"><div class="day">Mi 4.</div><div class="time">11:00</div></div>
+    <div class="info"><div class="title">🏠 Discovery Call — Alex Hamm (HAMM Architekten)</div><div class="detail">Google Meet · Zweiter Architekt-Kunde · kennt Kim</div></div>
   </div>
-  <div class="weather-slot">
-    <div class="label">🚲 Verdict</div>
-    <div class="value" style="color: #e65100;">Check manuell 🤷</div>
+  <div class="meeting">
+    <div class="time-block"><div class="day">Mi 4.</div><div class="time">18:30</div></div>
+    <div class="info"><div class="title">🤖 MAINCLAW — OpenClaw Frankfurt Meetup</div><div class="detail">Frankfurt am Main · Community-Event</div></div>
   </div>
 </div>
 
@@ -184,30 +212,17 @@
   </a>
 </div>
 
-<!-- Meetings -->
-<h2>📅 Meetings diese Woche</h2>
-<div class="card">
-  <div class="meeting">
-    <div class="time-block"><div class="day">Mi 4.</div><div class="time">11:00</div></div>
-    <div class="info"><div class="title">🏠 Discovery Call — Alex Hamm (HAMM Architekten)</div><div class="detail">Google Meet · Zweiter Architekt-Kunde · kennt Kim</div></div>
-  </div>
-  <div class="meeting">
-    <div class="time-block"><div class="day">Mi 4.</div><div class="time">18:30</div></div>
-    <div class="info"><div class="title">🤖 MAINCLAW — OpenClaw Frankfurt Meetup</div><div class="detail">Frankfurt am Main · Community-Event</div></div>
-  </div>
-</div>
-
 <!-- TODOs -->
-<h2>✅ TODOs <span class="badge">4 offen</span></h2>
+<h2 style="border-left:3px solid #ff385c;padding-left:0.5rem;">✅ TODOs <span class="badge">4 offen</span></h2>
 <div class="card">
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">ModulAI P1 Security Fixes — Impersonation + Indexes ✅</div>
       <div class="meta"><span class="tag" style="background:#f3e8ff;color:#7c3aed;">ModulAI</span> #2 Impersonation → sessionStorage · #5 useTeamMembers tenant filter · #7 tenant_id Indexes · #11 Impersonation in allen Hooks · <a href="https://danielmehlhart-bit.github.io/dashboard/briefings/2026-03-04-discovery-alex-hamm-features.html" style="color:#7c3aed;">→ Review Report</a></div>
     </div>
   </div>
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">Follow-Up Alex Hamm — Transkript ausgewertet ✅</div>
@@ -221,28 +236,28 @@
       <div class="meta"><span class="tag ac">HAM Architekten</span> Alex leitet daniel@mehlhart.de weiter an 2 interessierte Kontakte</div>
     </div>
   </div>
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">Discovery Call mit Alex Hamm ✅</div>
       <div class="meta"><span class="tag ac">HAM Architekten</span> Mi 4. März, 11:00 — erledigt</div>
     </div>
   </div>
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">Foto-Flow finalisieren & für Kim freigeben ✅</div>
       <div class="meta"><span class="tag ac">Architekt Connect</span> Löschen-Bug fixen · Richtig testen · Deployen · Supabase Storage-Limit checken</div>
     </div>
   </div>
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">Kim Follow-Up — Meeting-Notizen/Audio finden, Bugs extrahieren ✅</div>
       <div class="meta"><span class="tag ac">Architekt Connect</span> <span class="tag overdue">10 Tage überfällig!</span></div>
     </div>
   </div>
-  <div class="todo">
+  <div class="todo" style="display:none">
     <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
       <div class="text" style="text-decoration:line-through;color:#999;">SQL Migration ausführen (Bautagebuch Foto-Feature) ✅</div>
@@ -285,6 +300,8 @@
     <div style="margin-top: 0.8rem;"><span class="status new">Neu — Kontakt aufnehmen</span></div>
   </div>
 </div>
+
+<div style="border-top:2px solid #ebebeb;margin:2.5rem 0 1rem;padding-top:0.5rem;"><span style="font-size:0.75rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:0.08em;">🗂️ Workspace</span></div>
 
 <!-- Projekte -->
 <h2>🏗️ Projekte <span class="badge">5 aktiv + 1 Konzept</span></h2>
@@ -459,20 +476,6 @@
   <a class="link-chip" href="https://github.com/danielmehlhart-bit/architekt-connect">🐙 Architekt Connect</a>
   <a class="link-chip" href="https://github.com/danielmehlhart-bit/photobpp-organizer">🐙 BPP CRM</a>
   <a class="link-chip" href="https://github.com/danielmehlhart-bit/concordv3">🐙 Concord</a>
-</div>
-
-<!-- Kompass -->
-<h2>🧭 Kompass</h2>
-<div class="compass">
-  <div class="question">"Baue ich ein Produkt — oder baue ich Projekte?"</div>
-  <div class="compass-grid">
-    <div class="compass-do">✓ Früh Geld nehmen</div>
-    <div class="compass-dont">✗ Zu individuell werden</div>
-    <div class="compass-do">✓ Klarer Core, wiederverwendbar</div>
-    <div class="compass-dont">✗ Zu früh skalieren</div>
-    <div class="compass-do">✓ Messbare Outcomes</div>
-    <div class="compass-dont">✗ Preise aus Angst senken</div>
-  </div>
 </div>
 
 <div class="footer">Hatti 🏔️ · Sag "Update Dashboard" für eine frische Version · Strg+P → PDF</div>
