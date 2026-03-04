@@ -94,10 +94,22 @@
 
   .footer { text-align: center; color: #ccc; font-size: 0.8rem; margin-top: 2rem; padding: 1rem; }
 
+  .leads-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .lead-card { background: #fff; border-radius: 16px; padding: 1.3rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
+  .lead-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06); }
+  .lead-card .lead-name { font-size: 1rem; font-weight: 700; color: #222; margin-bottom: 0.15rem; }
+  .lead-card .lead-firm { font-size: 0.85rem; color: #717171; margin-bottom: 0.6rem; }
+  .lead-card .lead-row { font-size: 0.82rem; color: #444; margin-bottom: 0.3rem; }
+  .lead-card .lead-row .lead-label { color: #999; font-size: 0.78rem; margin-right: 0.2rem; }
+  .lead-card .lead-context { font-size: 0.82rem; color: #717171; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #f5f5f5; line-height: 1.5; }
+  .lead-card a.lead-email { color: #1565c0; text-decoration: none; }
+  .lead-card a.lead-email:hover { text-decoration: underline; }
+  .status.new { background: #e3f2fd; color: #1565c0; }
+
   @media print { .header { position: static; } body { background: #fff; } }
   @media (max-width: 600px) {
     .container { padding: 1rem; }
-    .projects-grid, .grid, .ideas-grid, .research-grid { grid-template-columns: 1fr; }
+    .projects-grid, .grid, .ideas-grid, .research-grid, .leads-grid { grid-template-columns: 1fr; }
     .weather-bar { flex-direction: column; align-items: flex-start; }
     .compass-grid { grid-template-columns: 1fr; }
   }
@@ -186,12 +198,12 @@
 </div>
 
 <!-- TODOs -->
-<h2>✅ TODOs <span class="badge">5 offen</span></h2>
+<h2>✅ TODOs <span class="badge">4 offen</span></h2>
 <div class="card">
   <div class="todo">
-    <div class="check urgent"></div>
+    <div class="check" style="background:#2e7d32;border-color:#2e7d32;"></div>
     <div>
-      <div class="text">ModulAI P1 Security Fixes — Impersonation + Indexes</div>
+      <div class="text" style="text-decoration:line-through;color:#999;">ModulAI P1 Security Fixes — Impersonation + Indexes ✅</div>
       <div class="meta"><span class="tag" style="background:#f3e8ff;color:#7c3aed;">ModulAI</span> #2 Impersonation → sessionStorage · #5 useTeamMembers tenant filter · #7 tenant_id Indexes · #11 Impersonation in allen Hooks · <a href="https://danielmehlhart-bit.github.io/dashboard/briefings/2026-03-04-discovery-alex-hamm-features.html" style="color:#7c3aed;">→ Review Report</a></div>
     </div>
   </div>
@@ -250,6 +262,27 @@
       <div class="text">Capacity Pressure Index für CS bauen</div>
       <div class="meta"><span class="tag" style="background:#e3f2fd;color:#1565c0;">Drooms CS</span> 3 Dimensionen: Throughput/Agent vs Baseline · Quality Decay (FRT/RT Trend) · Backlog Pressure (Unassigned %). Grün/Gelb/Rot Score → wann neuer Headcount? <strong>Nächster Schritt:</strong> FTE pro Region klären + SLA-Targets definieren. <a href="support-dashboard-prototype.html" style="color:#1565c0;">→ Support Dashboard</a></div>
     </div>
+  </div>
+</div>
+
+<!-- Leads -->
+<h2>🎯 Leads <span class="badge">2</span></h2>
+<div class="leads-grid">
+  <div class="lead-card">
+    <div class="lead-name">Stavros Alexandros Gavalas</div>
+    <div class="lead-firm">HAMM Architekten · Interner Kontakt</div>
+    <div class="lead-row"><span class="lead-label">Email:</span><a class="lead-email" href="mailto:a.gavalas@hammarchitekten.de">a.gavalas@hammarchitekten.de</a></div>
+    <div class="lead-row"><span class="lead-label">Quelle:</span>Warm Intro von Alex Hamm (Discovery Call 04.03.2026)</div>
+    <div class="lead-context">Arbeitet direkt bei HAM Architekten. Alex hat ihn in die Vernetzungs-Email eingebunden. Potentiell zuständig für technische Themen/IT im Büro.</div>
+    <div style="margin-top: 0.8rem;"><span class="status new">Neu — Kontakt aufnehmen</span></div>
+  </div>
+  <div class="lead-card">
+    <div class="lead-name">E. Raab</div>
+    <div class="lead-firm">Raab Immobilien</div>
+    <div class="lead-row"><span class="lead-label">Email:</span><a class="lead-email" href="mailto:e.raab@raabimmobilien.com">e.raab@raabimmobilien.com</a></div>
+    <div class="lead-row"><span class="lead-label">Quelle:</span>Warm Intro von Alex Hamm (Discovery Call 04.03.2026)</div>
+    <div class="lead-context">Immobilienfirma, von Alex als "sehr interessiert" beschrieben. Architekten und Immobilienfirmen haben ähnliche Pains (Projekt-Management, Email-Overload, Checklisten). Potentieller Kunde für ModulAI-Plattform oder angrenzende Lösung.</div>
+    <div style="margin-top: 0.8rem;"><span class="status new">Neu — Kontakt aufnehmen</span></div>
   </div>
 </div>
 
