@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marktbericht — 05.03.2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f7f7f7;
+            color: #222;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .date {
+            color: #717171;
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .indices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .index-box {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .index-name {
+            font-size: 0.9rem;
+            color: #717171;
+            margin-bottom: 8px;
+        }
+        .index-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .index-change {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .positive {
+            color: #00a699;
+        }
+        .negative {
+            color: #ff5a5f;
+        }
+        .neutral {
+            color: #717171;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #222;
+        }
+        p, li {
+            color: #484848;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li::before {
+            content: "•";
+            color: #00a699;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 0;
+        }
+        .highlight {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .losers {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff5a5f;
+            margin: 20px 0;
+        }
+        .source {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #717171;
+            font-size: 0.9rem;
+        }
+        a {
+            color: #00a699;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Marktbericht</h1>
+        <div class="date">05. März 2026</div>
+
+        <div class="indices">
+            <div class="index-box">
+                <div class="index-name">DAX</div>
+                <div class="index-value">24.986</div>
+                <div class="index-change positive">+0,02%</div>
+            </div>
+            <div class="index-box">
+                <div class="index-name">Dow Jones</div>
+                <div class="index-value">—</div>
+                <div class="index-change neutral">k.A.</div>
+            </div>
+            <div class="index-box">
+                <div class="index-name">Nasdaq</div>
+                <div class="index-value">—</div>
+                <div class="index-change neutral">k.A.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Marktlage</h2>
+            <p><strong>DAX schleppt sich leicht ins Plus</strong> — Nach zunächst deutlichen Verlusten konnte sich der Deutsche Aktienindex im Tagesverlauf etwas erholen und schloss minimal im Plus bei 24.986 Punkten (+0,02%).</p>
+            
+            <div class="highlight">
+                <strong>💬 Stimmung:</strong> "Die Mutigen sind aktuell in der Minderheit" — hohe Unsicherheit lähmt das Börsengeschehen.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⚠️ Haupttreiber</h2>
+            <ul>
+                <li><strong>Zollpolitik der USA:</strong> Neue weltweite US-Einfuhrzölle von 10% in Kraft getreten; Trump kündigte Anhebung auf 15% an, Dekret steht noch aus</li>
+                <li><strong>Rechtliche Auseinandersetzung:</strong> FedEx reicht als erstes Großunternehmen Klage gegen Trump-Regierung ein, fordert Rückzahlung unrechtmäßiger Zölle</li>
+                <li><strong>Geopolitische Spannungen:</strong> Naher Osten belastet weiterhin</li>
+                <li><strong>KI-Sorgen:</strong> Bedenken über zu rasante KI-Entwicklung und Auswirkungen auf Software-Unternehmen</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="losers">
+                <h2>📉 Größte Verlierer</h2>
+                <ul>
+                    <li><strong>Fresenius Medical Care (FMC):</strong> -5,6% — Trotz 82% Gewinnsprung 2025 pessimistischer Ausblick für 2026</li>
+                    <li><strong>MTU Aero Engines:</strong> -6,4% — Rekordgewinn durch teure Rückrufaktion mit Pratt & Whitney belastet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🌍 Deutsche Exportwirtschaft</h2>
+            <p>Die Stimmung hat sich leicht verbessert: ifo-Exporterwartungen stiegen von -0,8 auf +2,6 Punkte. <em>"Die Exportwirtschaft startet mit etwas Rückenwind ins neue Jahr"</em> — von breiter Erholung aber noch keine Rede.</p>
+        </div>
+
+        <div class="card">
+            <h2>🎖️ Rüstungsbranche im Fokus</h2>
+            <p>Am vierten Jahrestag des Ukraine-Kriegs kündigte <strong>Gabler Group</strong> (Lübecker U-Boot-Zulieferer) Börsengang für 9. März an — Preisspanne 37-47 Euro.</p>
+            <p><strong>Rüstungsaktien im Höhenflug:</strong></p>
+            <ul>
+                <li>Rheinmetall: von 92€ auf 1.723€</li>
+                <li>Hensoldt: Verdreifachung des Kurses</li>
+                <li>Europäische Player (Leonardo, Saab, BAE Systems) mit massiven Kursaufschlägen</li>
+            </ul>
+        </div>
+
+        <div class="source">
+            <strong>Quelle:</strong> <a href="https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-dax-dow-boerse-108.html" target="_blank">Tagesschau Marktbericht</a><br>
+            <em>Hinweis: Daten vom 24.02.2026 — aktuellere Version möglicherweise verfügbar</em>
+        </div>
+    </div>
+</body>
+</html>
