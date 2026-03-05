@@ -77,6 +77,21 @@
   a.research-card .title { font-size: 0.9rem; font-weight: 600; color: #222; margin-top: 0.2rem; }
   a.research-card .rdate { font-size: 0.75rem; color: #bbb; margin-top: 0.3rem; }
 
+  .agents-section { margin-top: 0.5rem; }
+  .agents-project { margin-bottom: 1.2rem; }
+  .agents-project-title { font-size: 0.9rem; font-weight: 700; color: #222; margin-bottom: 0.5rem; padding-bottom: 0.3rem; border-bottom: 2px solid #f0f0f0; }
+  .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem; }
+  a.agent-card { background: #fff; border-radius: 10px; padding: 0.8rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); text-decoration: none; color: inherit; display: block; transition: transform 0.15s, box-shadow 0.2s; border-left: 3px solid #ddd; }
+  a.agent-card:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  a.agent-card.modulai { border-left-color: #7c4dff; }
+  a.agent-card.architekt { border-left-color: #ff6d00; }
+  a.agent-card.bpp { border-left-color: #00bfa5; }
+  a.agent-card.concord { border-left-color: #1565c0; }
+  a.agent-card.research { border-left-color: #6d4c41; }
+  a.agent-card .atype { font-size: 0.6rem; color: #999; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  a.agent-card .atitle { font-size: 0.85rem; font-weight: 600; color: #222; margin-top: 0.15rem; }
+  a.agent-card .adate { font-size: 0.72rem; color: #bbb; margin-top: 0.2rem; }
+
   .ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; }
   .idea-card { background: #fff; border-radius: 12px; padding: 1rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03); }
   .idea-card .name { font-size: 0.9rem; font-weight: 600; color: #222; }
@@ -493,6 +508,51 @@
     <div class="title">Zoho Desk API — OAuth + Refresh Token</div>
     <div class="rdate">3. März · In Progress</div>
   </a>
+</div>
+
+<!-- Project Agents -->
+<h2>🤖 Project Agents</h2>
+<div class="agents-section">
+  <div class="agents-project">
+    <div class="agents-project-title">🚀 ModulAI</div>
+    <div class="agents-grid">
+      <div class="agent-card modulai" style="border-left: 3px solid #7c4dff; background: #fff; border-radius: 10px; padding: 0.8rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+        <div class="atype">Bereit</div>
+        <div class="atitle">Noch keine Artefakte</div>
+        <div class="adate">Meetings, PRDs, Reviews hier verlinkt</div>
+      </div>
+    </div>
+  </div>
+  <div class="agents-project">
+    <div class="agents-project-title">🏗️ Architekt Connect</div>
+    <div class="agents-grid">
+      <a class="agent-card architekt" href="briefings/2026-03-05-architekt-connect-agent-struktur.html" style="border-left-color: #ff6d00;">
+        <div class="atype">📋 Struktur</div>
+        <div class="atitle">Agent-Struktur &amp; Prompts</div>
+        <div class="adate">5. März</div>
+      </a>
+    </div>
+  </div>
+  <div class="agents-project">
+    <div class="agents-project-title">📸 BPP CRM</div>
+    <div class="agents-grid">
+      <div class="agent-card bpp" style="border-left: 3px solid #00bfa5; background: #fff; border-radius: 10px; padding: 0.8rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+        <div class="atype">Bereit</div>
+        <div class="atitle">Noch keine Artefakte</div>
+        <div class="adate">Meetings, PRDs, Reviews hier verlinkt</div>
+      </div>
+    </div>
+  </div>
+  <div class="agents-project">
+    <div class="agents-project-title">✅ Concord</div>
+    <div class="agents-grid">
+      <div class="agent-card concord" style="border-left: 3px solid #1565c0; background: #fff; border-radius: 10px; padding: 0.8rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+        <div class="atype">Bereit</div>
+        <div class="atitle">Noch keine Artefakte</div>
+        <div class="adate">Meetings, PRDs, Reviews hier verlinkt</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Ideen -->
